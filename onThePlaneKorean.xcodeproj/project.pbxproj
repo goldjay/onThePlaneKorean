@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		5947BB7C1E3EC2FB00E55AC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5947BB7B1E3EC2FB00E55AC9 /* AppDelegate.swift */; };
 		5947BB7E1E3EC2FB00E55AC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5947BB7D1E3EC2FB00E55AC9 /* ViewController.swift */; };
-		5947BB811E3EC2FB00E55AC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5947BB7F1E3EC2FB00E55AC9 /* Main.storyboard */; };
+		5947BB811E3EC2FB00E55AC9 /* onThePlaneKorean.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5947BB7F1E3EC2FB00E55AC9 /* onThePlaneKorean.storyboard */; };
 		5947BB841E3EC2FB00E55AC9 /* onThePlaneKorean.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5947BB821E3EC2FB00E55AC9 /* onThePlaneKorean.xcdatamodeld */; };
 		5947BB861E3EC2FB00E55AC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5947BB851E3EC2FB00E55AC9 /* Assets.xcassets */; };
 		5947BB891E3EC2FB00E55AC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5947BB871E3EC2FB00E55AC9 /* LaunchScreen.storyboard */; };
+		5947BB911E3EC5AF00E55AC9 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5947BB901E3EC5AF00E55AC9 /* TableViewController.swift */; };
+		5947BB931E3EC68B00E55AC9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5947BB921E3EC68B00E55AC9 /* DetailViewController.swift */; };
+		5947BB951E3ECA8300E55AC9 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5947BB941E3ECA8300E55AC9 /* Deck.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5947BB781E3EC2FB00E55AC9 /* onThePlaneKorean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onThePlaneKorean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5947BB7B1E3EC2FB00E55AC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5947BB7D1E3EC2FB00E55AC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5947BB801E3EC2FB00E55AC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5947BB801E3EC2FB00E55AC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/onThePlaneKorean.storyboard; sourceTree = "<group>"; };
 		5947BB831E3EC2FB00E55AC9 /* onThePlaneKorean.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = onThePlaneKorean.xcdatamodel; sourceTree = "<group>"; };
 		5947BB851E3EC2FB00E55AC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5947BB881E3EC2FB00E55AC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5947BB8A1E3EC2FB00E55AC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5947BB901E3EC5AF00E55AC9 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		5947BB921E3EC68B00E55AC9 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		5947BB941E3ECA8300E55AC9 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +64,10 @@
 			children = (
 				5947BB7B1E3EC2FB00E55AC9 /* AppDelegate.swift */,
 				5947BB7D1E3EC2FB00E55AC9 /* ViewController.swift */,
-				5947BB7F1E3EC2FB00E55AC9 /* Main.storyboard */,
+				5947BB901E3EC5AF00E55AC9 /* TableViewController.swift */,
+				5947BB921E3EC68B00E55AC9 /* DetailViewController.swift */,
+				5947BB941E3ECA8300E55AC9 /* Deck.swift */,
+				5947BB7F1E3EC2FB00E55AC9 /* onThePlaneKorean.storyboard */,
 				5947BB851E3EC2FB00E55AC9 /* Assets.xcassets */,
 				5947BB871E3EC2FB00E55AC9 /* LaunchScreen.storyboard */,
 				5947BB8A1E3EC2FB00E55AC9 /* Info.plist */,
@@ -129,7 +138,7 @@
 			files = (
 				5947BB891E3EC2FB00E55AC9 /* LaunchScreen.storyboard in Resources */,
 				5947BB861E3EC2FB00E55AC9 /* Assets.xcassets in Resources */,
-				5947BB811E3EC2FB00E55AC9 /* Main.storyboard in Resources */,
+				5947BB811E3EC2FB00E55AC9 /* onThePlaneKorean.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,21 +149,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5947BB951E3ECA8300E55AC9 /* Deck.swift in Sources */,
 				5947BB841E3EC2FB00E55AC9 /* onThePlaneKorean.xcdatamodeld in Sources */,
 				5947BB7E1E3EC2FB00E55AC9 /* ViewController.swift in Sources */,
+				5947BB931E3EC68B00E55AC9 /* DetailViewController.swift in Sources */,
 				5947BB7C1E3EC2FB00E55AC9 /* AppDelegate.swift in Sources */,
+				5947BB911E3EC5AF00E55AC9 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5947BB7F1E3EC2FB00E55AC9 /* Main.storyboard */ = {
+		5947BB7F1E3EC2FB00E55AC9 /* onThePlaneKorean.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5947BB801E3EC2FB00E55AC9 /* Base */,
 			);
-			name = Main.storyboard;
+			name = onThePlaneKorean.storyboard;
 			sourceTree = "<group>";
 		};
 		5947BB871E3EC2FB00E55AC9 /* LaunchScreen.storyboard */ = {
@@ -306,6 +318,7 @@
 				5947BB8F1E3EC2FB00E55AC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

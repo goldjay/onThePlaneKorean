@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KXi-ec-WpQ">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="onThePlaneKorean" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flag_of_South_Korea.svg" translatesAutoresizingMaskIntoConstraints="NO" id="ObI-dF-KR9">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="C6F-ck-1HK"/>
+                                    <constraint firstAttribute="height" constant="128" id="jRq-8Y-t2y"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsW-42-1Uf">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="n7s-N2-FvW"/>
+                                    <constraint firstAttribute="height" constant="50" id="oy1-VJ-SGp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="44"/>
+                                <state key="normal" title="START"/>
+                                <connections>
+                                    <segue destination="OZP-yr-pVP" kind="show" id="wOw-2x-n4E"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eyn-U0-9Q5">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="2Y3-An-zOG"/>
+                                    <constraint firstAttribute="height" constant="50" id="iQi-Mu-xxK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="44"/>
+                                <state key="normal" title="ABOUT"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TsW-42-1Uf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6k9-l6-K4H"/>
+                            <constraint firstItem="ObI-dF-KR9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DFl-il-QIu"/>
+                            <constraint firstItem="Eyn-U0-9Q5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KW2-QC-6O9"/>
+                            <constraint firstItem="ObI-dF-KR9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="54" id="bUu-9N-LwT"/>
+                            <constraint firstItem="Eyn-U0-9Q5" firstAttribute="top" secondItem="TsW-42-1Uf" secondAttribute="bottom" constant="25" id="pNm-NQ-wGR"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Eyn-U0-9Q5" secondAttribute="bottom" constant="76" id="rR4-Et-uK1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="sOH-GB-tZN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="38.23088455772114"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Srl-AN-EEQ">
+            <objects>
+                <tableViewController id="OZP-yr-pVP" customClass="TableViewController" customModule="onThePlaneKorean" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0mW-ac-krO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="level" id="f8B-a9-Ikf">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f8B-a9-Ikf" id="mB0-hN-Vbh">
+                                    <frame key="frameInset" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="OZP-yr-pVP" id="bY5-2q-g9L"/>
+                            <outlet property="delegate" destination="OZP-yr-pVP" id="Te4-wM-wro"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="omX-or-yTR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1868" y="133.5832083958021"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="xsn-E2-Dpd">
+            <objects>
+                <viewController id="VUd-td-wAF" customClass="DetailViewController" customModule="onThePlaneKorean" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="isO-VX-jg6"/>
+                        <viewControllerLayoutGuide type="bottom" id="mes-C5-3IZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9Oj-sk-orb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PWj-GT-hz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2676" y="134.48275862068968"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="C76-lA-WHF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KXi-ec-WpQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="E5S-U5-z3L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="K8n-rt-xdr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S6N-kM-LWf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="70" y="38"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Flag_of_South_Korea.svg" width="2000" height="1333"/>
+    </resources>
+</document>
