@@ -32,8 +32,12 @@ class TutorialViewController: UIViewController {
     @IBAction func swipeRight(_ sender: AnyObject) {
         //Check if we are out of bounds
         if(pos + 1 == deck.count){
-            print("At the limit!!")
             //Go to the quiz
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "Question") as? QuestionViewController {
+                vc.num = num
+                vc.deck = deck
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }else{
             pos += 1
             presentData()
