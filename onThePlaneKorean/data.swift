@@ -18,3 +18,6 @@ class deckData {
         completed = false
     }
 }
+
+//Variable for saving user data
+var userData: [deckData] = []

@@ -7,26 +7,58 @@
 //
 
 import UIKit
+import CoreData
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, sendBack {
     
     var currentDeck: [[String]] = []
+    var numLevels = 6
     
     //Load info from Core Data
-    var savedDecks = [deckData?](repeating: nil, count:6)
+    //var savedDecks = [deckData]()
     
+    var deckFromData = [NSManagedObject?]()
     
     //isCompleted
     //highScore
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //Try to load from Core Data
+        if(deckFromData.count == 0){
+            //Otherwise create objects for all of the level' data
+            for _ in 0 ..< numLevels {
+                var a = deckData()
+                userData.append(a)
+            }
+        }
         
-        print(savedDecks)
     }
+    
+    //Get data from Coredata
+    override func viewWillAppear(_ animated: Bool) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        //Managed object context
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //Fetch from Core Data
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "DeckData")
+        
+        do {
+            deckFromData = try managedContext.fetch(fetchRequest)
+            print("Loading data")
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        print(deckFromData)
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -68,35 +100,41 @@ class MenuViewController: UIViewController {
             }
         }
         
-        
+         //DEBUG
         //Check if the deck has not been completed
-        if(savedDecks[numLevel] == nil || savedDecks[numLevel]?.completed == false){
+        if(userData[numLevel].completed == false){
             //Present the tutorial for the course
             if let vc = storyboard?.instantiateViewController(withIdentifier: "Tutorial") as? TutorialViewController {
                 vc.deck = currentDeck
                 vc.num = numLevel
-                
                 navigationController?.pushViewController(vc, animated: true)
             }
 
-        } else {
+        } 
+ 
+        else {
             if let vc = storyboard?.instantiateViewController(withIdentifier: "Question") as? QuestionViewController {
                 
                 vc.deck = currentDeck
                 vc.num = numLevel
+                vc.sendBack = self
                 
                 navigationController?.pushViewController(vc, animated: true)
             }
             
         }
-        
-        
-        
-        
-        
         print(currentDeck)
         print("\n\n\n")
     }
     
+    //Do something with the data returned
+    func setSentData(highScore: Double, completed: Bool){
+        
+        print("YOU GOT THIS SCORE!")
+        print(highScore)
+        print("AND COMPLETED")
+        print(completed)
+    }
+
 
 }

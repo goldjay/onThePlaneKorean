@@ -9,6 +9,11 @@
 import UIKit
 import GameplayKit //For shuffling the array
 
+protocol sendBack {
+    func setSentData(highScore: Double, completed: Bool)
+}
+
+
 class QuestionViewController: UIViewController {
     
     @IBOutlet weak var button1: UIButton!
@@ -18,6 +23,7 @@ class QuestionViewController: UIViewController {
     
     var num: Int = 0
     var deck: [[String]] = []
+    var sendBack: sendBack?
     
     var correctAnswer: Int = 0
     var numAnswered: Int = 0
@@ -64,22 +70,27 @@ class QuestionViewController: UIViewController {
         questionLabel.text = shuffledDeck[correctAnswer][0]
     }
     
-    //Go back to root menu
-    
-    //CHANGE
     func backToMenu(action: UIAlertAction! = nil) {
         //Send info back
-        //sendBack?.setFinishedDeck(viewedDeck: selectedDeck!, numFromDetail: num!)
-        _ = navigationController?.popViewController(animated: true)
+        //Send info back
+        sendBack?.setSentData(highScore: highScore, completed: completed)
+        navigationController!.pushViewController(storyboard!.instantiateViewController(withIdentifier: "Menu") as UIViewController, animated: true)
+
     }
     
     @IBAction func answerTapped(_ sender: UIButton) {
         
         //If the title on the button tapped is the same as the correctAnswer
+        if sender.tag == correctAnswer {
+            print("YOU GOT ONE CORRECT")
+            numCorrect += 1
+            print("NUMBER OF CORRECT ANSWERS:")
+            print(numCorrect)
+        }
         
         numAnswered += 1
         //If have have answered enough questions (CHANGED FOR DEBUG)
-        if numAnswered == 10 {
+        if numAnswered == 1 {
             
             print(Double(numCorrect/numAnswered))
             
@@ -99,7 +110,10 @@ class QuestionViewController: UIViewController {
             }
             
             //Send info back
-            //sendBack?.setFinishedDeck(viewedDeck: selectedDeck!, numFromDetail: num!)
+            sendBack?.setSentData(highScore: highScore, completed: completed)
+            print("HighScore: \(highScore)")
+            print("Completed: \(completed)")
+            
             
             //Reset stats
             numAnswered = 0

@@ -63,7 +63,7 @@
         <!--Menu View Controller-->
         <scene sceneID="XNW-cg-Fre">
             <objects>
-                <viewController id="Xdo-H5-e4e" customClass="MenuViewController" customModule="onThePlaneKorean" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Menu" id="Xdo-H5-e4e" customClass="MenuViewController" customModule="onThePlaneKorean" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IId-0F-Ncv"/>
                         <viewControllerLayoutGuide type="bottom" id="Csm-Ss-DKV"/>
