@@ -10,7 +10,7 @@ import UIKit
 import GameplayKit //For shuffling the array
 
 protocol sendBack {
-    func setSentData(highScore: Double, completed: Bool)
+    func setSentData(num: Int, highScore: Double, completed: Bool)
 }
 
 
@@ -40,8 +40,8 @@ class QuestionViewController: UIViewController {
         button2.layer.cornerRadius = 10
         button3.layer.cornerRadius = 10
 
-        print(num)
-        print(deck)
+        //print(num)
+        //print(deck)
         
         askQuestion()
         
@@ -59,8 +59,8 @@ class QuestionViewController: UIViewController {
         
         //Choose a random answer
         correctAnswer = Int(arc4random_uniform(3))
-        print("CORRECT ANSWER IN askQuestion: ")
-        print(correctAnswer)
+        //print("CORRECT ANSWER IN askQuestion: ")
+        //print(correctAnswer)
         
         
         button1.setTitle(shuffledDeck[0][1], for: UIControlState.normal)
@@ -73,7 +73,7 @@ class QuestionViewController: UIViewController {
     func backToMenu(action: UIAlertAction! = nil) {
         //Send info back
         //Send info back
-        sendBack?.setSentData(highScore: highScore, completed: completed)
+        //sendBack?.setSentData(num: num, highScore: highScore, completed: completed)
         navigationController!.pushViewController(storyboard!.instantiateViewController(withIdentifier: "Menu") as UIViewController, animated: true)
 
     }
@@ -82,10 +82,10 @@ class QuestionViewController: UIViewController {
         
         //If the title on the button tapped is the same as the correctAnswer
         if sender.tag == correctAnswer {
-            print("YOU GOT ONE CORRECT")
+            //print("YOU GOT ONE CORRECT")
             numCorrect += 1
-            print("NUMBER OF CORRECT ANSWERS:")
-            print(numCorrect)
+            //print("NUMBER OF CORRECT ANSWERS:")
+            //print(numCorrect)
         }
         
         numAnswered += 1
@@ -110,9 +110,9 @@ class QuestionViewController: UIViewController {
             }
             
             //Send info back
-            sendBack?.setSentData(highScore: highScore, completed: completed)
-            print("HighScore: \(highScore)")
-            print("Completed: \(completed)")
+            //sendBack?.setSentData(num: num, highScore: highScore, completed: completed)
+            //print("HighScore: \(highScore)")
+            //print("Completed: \(completed)")
             
             
             //Reset stats
@@ -126,8 +126,9 @@ class QuestionViewController: UIViewController {
             present(ac, animated: true)
             
         }
-        askQuestion()
-        
+        else{
+                askQuestion()
+        }
     }
 
 }
