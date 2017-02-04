@@ -24,7 +24,7 @@ class MenuViewController: UIViewController, sendBack {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+/*
         //Try to load from Core Data
         if(decks.count == 0){
             //Otherwise create objects for all of the level' data
@@ -33,12 +33,14 @@ class MenuViewController: UIViewController, sendBack {
                 userData.append(a)
             }
         }
-        
+ */
     }
     
     //Get data from Coredata
     override func viewWillAppear(_ animated: Bool) {
+      
         
+        /*
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -57,6 +59,8 @@ class MenuViewController: UIViewController, sendBack {
         }
         
         print(decks)
+ 
+        */
     }
     
 
@@ -64,24 +68,12 @@ class MenuViewController: UIViewController, sendBack {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func levelSelected(_ sender: UIButton) {
         
-        currentDeck = [] //Clear deck from previous selection
-        
         let num = sender.tag
-        //let tmpButton = self.view.viewWithTag(numLevel) as? UIButton
         
+        //Move button to the side
         UIView.animate(withDuration: 1.0, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
         
             var offset = 0;
@@ -100,65 +92,16 @@ class MenuViewController: UIViewController, sendBack {
                 sender.setTitle("\(num)", for: .normal)
             }else{
                 offset = 300
-                sender.setTitle("Level \(num) ", for: .normal)
+                sender.setTitle("LEVEL \(num) ", for: .normal)
             }
-            
-            
-            
             
             sender.frame = CGRect(x: originXbutton, y: originYbutton, width: originWidthbutton+CGFloat(offset), height: originHeightbutton)
             
             }, completion: nil)
-        
-                
-    /*
-        //Prep the proper deck
-        //Find and load level string from the disk
-        if let levelFilePath = Bundle.main.path(forResource: "level\(numLevel)", ofType: "txt") {
-            
-            if let levelContents = try? String(contentsOfFile: levelFilePath) {
-                //Split Q and A's by linebreak
-                let lines = levelContents.components(separatedBy: CharacterSet.newlines)
-                    .filter{ !$0.isEmpty }
-                
-                for line in lines{
-                    //Splits each line into answer and clue
-                    let parts = line.components(separatedBy: ":")
-                    
-                    let card = [parts[0],parts[1], parts[2]]
-                    currentDeck.append(card)
-                }
-            }
-        }
-     */
-        
-        /*
-        //Go to the Question
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "Question") as? QuestionViewController {
-            
-            vc.deck = currentDeck
-            vc.num = numLevel
-            vc.sendBack = self
-            
-            navigationController?.pushViewController(vc, animated: true)
-        }
-    */
-
-        
-/*         //DEBUG
-        //Check if the deck has not been completed
-        if(userData[numLevel].completed == false){
-            //Present the tutorial for the course
-            if let vc = storyboard?.instantiateViewController(withIdentifier: "Tutorial") as? TutorialViewController {
-                vc.deck = currentDeck
-                vc.num = numLevel
-                navigationController?.pushViewController(vc, animated: true)
-            }
-
-        } 
- */
-        
     }
+    
+    
+    
     
     //Do something with the data returned
     func setSentData(num: Int,highScore: Double, completed: Bool){
@@ -208,6 +151,81 @@ class MenuViewController: UIViewController, sendBack {
             print("Could not save. \(error.userInfo)")
         }
     }
+    
+    func goToNextView(viewName: String, num: Int){
+           }
+    
+    @IBAction func selectTutorial(_ sender: UIButton) {
+        currentDeck = [] //Clear deck from previous selection
+        
+        let num = sender.tag
+        
+        if let levelFilePath = Bundle.main.path(forResource: "level\(num)", ofType: "txt") {
+            
+            if let levelContents = try? String(contentsOfFile: levelFilePath) {
+                //Split Q and A's by linebreak
+                let lines = levelContents.components(separatedBy: CharacterSet.newlines)
+                    .filter{ !$0.isEmpty }
+                
+                for line in lines{
+                    //Splits each line into answer and clue
+                    let parts = line.components(separatedBy: ":")
+                    
+                    let card = [parts[0],parts[1], parts[2]]
+                    currentDeck.append(card)
+                }
+            }
+            
+            print(currentDeck)
+            
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "Tutorial") as? TutorialViewController {
+                
+                vc.deck = currentDeck
+                vc.num = num
+                //vc.sendBack = self
+                
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
+    
+    
+    @IBAction func selectQuiz(_ sender: UIButton) {
+        currentDeck = [] //Clear deck from previous selection
+        
+        let num = sender.tag
+        
+        if let levelFilePath = Bundle.main.path(forResource: "level\(num)", ofType: "txt") {
+            
+            if let levelContents = try? String(contentsOfFile: levelFilePath) {
+                //Split Q and A's by linebreak
+                let lines = levelContents.components(separatedBy: CharacterSet.newlines)
+                    .filter{ !$0.isEmpty }
+                
+                for line in lines{
+                    //Splits each line into answer and clue
+                    let parts = line.components(separatedBy: ":")
+                    
+                    let card = [parts[0],parts[1], parts[2]]
+                    currentDeck.append(card)
+                }
+            }
+            
+            print(currentDeck)
+            
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "Question") as? QuestionViewController {
+                
+                vc.deck = currentDeck
+                vc.num = num
+                vc.sendBack = self
+                
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+
+      
+    }
+    
 /*
     // MARK: Delete Data Records
     
@@ -232,6 +250,7 @@ class MenuViewController: UIViewController, sendBack {
         }
         
     }
+     
     
     // MARK: Get Context
     
