@@ -370,6 +370,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Tc8-ao-Ss8">
+                                <frame key="frameInset" minX="37" minY="352" width="300" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="0.96500784158706665" green="0.82144898176193237" blue="0.062565483152866364" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -378,11 +382,12 @@
                         <outlet property="button2" destination="R0n-Dm-8ry" id="Eed-eF-TV8"/>
                         <outlet property="button3" destination="eRt-hb-UQX" id="LAW-4Q-DU7"/>
                         <outlet property="questionLabel" destination="Xdh-iQ-Cwv" id="GGQ-bp-liH"/>
+                        <outlet property="timerBar" destination="Tc8-ao-Ss8" id="Lo6-cR-FfN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Le4-oh-byd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2702" y="37"/>
+            <point key="canvasLocation" x="2701.5999999999999" y="36.431784107946029"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="9Hm-eS-XZE">
