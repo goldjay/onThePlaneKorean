@@ -20,7 +20,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var timerBar: UIProgressView!
+    @IBOutlet weak var timerLabel: UILabel!
     
     //From menu view
     var num: Int = 0
@@ -38,9 +38,10 @@ class QuestionViewController: UIViewController {
     
     //For the timer
     var timer = Timer()
-    var poseDuration = 40
-    var indexProgressBar = 0
-    var currentPoseIndex = 0
+    var originalWidth: CGFloat = 0
+    var decrementAmt: CGFloat = 0
+    var numSecs: CGFloat = 30
+    var count: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,12 +50,15 @@ class QuestionViewController: UIViewController {
         button2.layer.cornerRadius = 10
         button3.layer.cornerRadius = 10
         
-        timerBar.progress = 0.0
+        originalWidth = timerLabel.frame.width
+        decrementAmt = originalWidth / numSecs
         
         askQuestion()
     }
 
     func askQuestion(action: UIAlertAction! = nil) {
+        
+        //resetTimerLabel()
         
         if(!checkIfFinished()){
             //TO DO: change shuffle to happen after user reaches end of deck
@@ -69,7 +73,7 @@ class QuestionViewController: UIViewController {
             
             questionLabel.text = shuffledDeck[correctAnswer][0]
             
-            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(QuestionViewController.setProgressBar), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(QuestionViewController.setTimerLabel), userInfo: nil, repeats: true)
         }
     }
     
@@ -113,37 +117,51 @@ class QuestionViewController: UIViewController {
         return false
     }
     
-    //MARK: timer
-    func setProgressBar()
+    func setTimerLabel()
     {
-        if indexProgressBar == poseDuration
+        let currWidth = timerLabel.frame.width
+        
+        if currWidth <= 0
         {
             numAnswered += 1
-            resetTimer()
+            resetTimerLabel()
             askQuestion()
         }
         
-        // update the display
-        // use poseDuration - 1 so that you display 20 steps of the the progress bar, from 0...19
-        timerBar.progress = Float(indexProgressBar) / Float(poseDuration - 1)
         
-        // increment the counter
-        indexProgressBar += 1
+        let frmPlay : CGRect = timerLabel.frame
+        
+        let originXbutton = frmPlay.origin.x
+        let originYbutton = frmPlay.origin.y
+        
+        let oldHeight = frmPlay.size.height
+        let newWidth = originalWidth - (decrementAmt * count)
+        
+        timerLabel.frame = CGRect(x: originXbutton, y: originYbutton, width: newWidth, height: oldHeight)
+        
+        //Update the display
+        //timerLabel
+        
+        count += 1
     }
     
-    func getNextPoseData()
+    func resetTimerLabel()
     {
-        // do next pose stuff
-        currentPoseIndex += 1
-        print(currentPoseIndex)
-    }
-    
-    func resetTimer() {
-        timer.invalidate()
-        indexProgressBar = 0
-        currentPoseIndex = 0
+        //Set width to original
+        let frmPlay : CGRect = timerLabel.frame
         
+        let originXbutton = frmPlay.origin.x
+        let originYbutton = frmPlay.origin.y
+        
+        let oldHeight = frmPlay.size.height
+        let newWidth = originalWidth
+        
+        timerLabel.frame = CGRect(x: originXbutton, y: originYbutton, width: newWidth, height: oldHeight)
+        
+        timer.invalidate()
+        count = 0
     }
+
     
     func backToMenu(action: UIAlertAction! = nil) {
         //Send info back
@@ -155,7 +173,7 @@ class QuestionViewController: UIViewController {
     
     @IBAction func answerTapped(_ sender: UIButton) {
         
-        resetTimer()
+        resetTimerLabel()
 
         //If the title on the button tapped is the same as the correctAnswer
         if sender.tag == correctAnswer {

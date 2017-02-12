@@ -30,6 +30,14 @@ class TutorialViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func swipeRight(_ sender: AnyObject) {
+        //Check
+        if(pos > 0){
+            pos -= 1
+            presentData()
+        }
+        
+    }
+    @IBAction func swipeLeft(_ sender: AnyObject) {
         //Check if we are out of bounds
         if(pos + 1 == deck.count){
             //Go to the quiz
@@ -40,14 +48,6 @@ class TutorialViewController: UIViewController {
             }
         }else{
             pos += 1
-            presentData()
-        }
-        
-    }
-    @IBAction func swipeLeft(_ sender: AnyObject) {
-        //Check 
-        if(pos > 0){
-            pos -= 1
             presentData()
         }
     }
