@@ -1,11 +1,14 @@
-아:ah:Open wide and say "ah"
-어:eo/uh:Thinking of something like "uhhh"
-으:eu:Bleu cheese
-이:i:Sharp i like beef or cheese
-오:oh:As in "dough" or open"
-야:ya:As in yaaaaas
-여:yuh: as in young
-요:yo:Yo! MTV raps
-우:oo:cool, fool, pool
-애:ae:at
-에:eh:As in met
+ㄱ:g/k:soft g sound
+ㄴ:n:nice, now
+ㄷ:d/t:tongue on the back of your front teeth
+ㄹ:l/r:tongue in middle of roof of mouth
+ㅁ:m:map, magic
+ㅂ:b/p:soft b sound
+ㅅ:s:soft s
+ㅇ:ng or placeholder: ng at the end of a group, placeholder at the beginning
+ㅈ:j:jam, jump
+ㅊ:ch:chicken, champion
+ㅋ:k:kite, kind
+ㅌ:t:table,
+ㅍ:p:pizza, place
+ㅎ:h:hat, happy

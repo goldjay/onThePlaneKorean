@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		591F98D91E52758E00B5F7D1 /* commonWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = 591F98D81E52758E00B5F7D1 /* commonWords.txt */; };
+		591F98E51E52E33600B5F7D1 /* ExpandingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591F98E41E52E33600B5F7D1 /* ExpandingTableViewController.swift */; };
+		591F98E71E52E86400B5F7D1 /* ExpandingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591F98E61E52E86400B5F7D1 /* ExpandingTableViewCell.swift */; };
 		5941DB501E460B190065EDCD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941DB4F1E460B190065EDCD /* MenuViewController.swift */; };
 		5947BB7C1E3EC2FB00E55AC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5947BB7B1E3EC2FB00E55AC9 /* AppDelegate.swift */; };
-		5947BB7E1E3EC2FB00E55AC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5947BB7D1E3EC2FB00E55AC9 /* ViewController.swift */; };
 		5947BB811E3EC2FB00E55AC9 /* onThePlaneKorean.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5947BB7F1E3EC2FB00E55AC9 /* onThePlaneKorean.storyboard */; };
 		5947BB841E3EC2FB00E55AC9 /* onThePlaneKorean.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5947BB821E3EC2FB00E55AC9 /* onThePlaneKorean.xcdatamodeld */; };
 		5947BB861E3EC2FB00E55AC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5947BB851E3EC2FB00E55AC9 /* Assets.xcassets */; };
@@ -20,14 +22,17 @@
 		5947BBA01E3EDB3F00E55AC9 /* level4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5947BB9C1E3EDB3F00E55AC9 /* level4.txt */; };
 		5947BBB41E3F2A2700E55AC9 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5947BBB31E3F2A2700E55AC9 /* QuestionViewController.swift */; };
 		5959543B1E40BABC004FE725 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5959543A1E40BABC004FE725 /* TutorialViewController.swift */; };
-		5959543D1E40BCA4004FE725 /* data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5959543C1E40BCA4004FE725 /* data.swift */; };
+		59D501FA1E57C7A500355D35 /* level5.txt in Resources */ = {isa = PBXBuildFile; fileRef = 59D501F91E57C7A500355D35 /* level5.txt */; };
+		59F684BD1E53269400F1FA2C /* customColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F684BC1E53269400F1FA2C /* customColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		591F98D81E52758E00B5F7D1 /* commonWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = commonWords.txt; sourceTree = "<group>"; };
+		591F98E41E52E33600B5F7D1 /* ExpandingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandingTableViewController.swift; sourceTree = "<group>"; };
+		591F98E61E52E86400B5F7D1 /* ExpandingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandingTableViewCell.swift; sourceTree = "<group>"; };
 		5941DB4F1E460B190065EDCD /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		5947BB781E3EC2FB00E55AC9 /* onThePlaneKorean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onThePlaneKorean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5947BB7B1E3EC2FB00E55AC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5947BB7D1E3EC2FB00E55AC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5947BB801E3EC2FB00E55AC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/onThePlaneKorean.storyboard; sourceTree = "<group>"; };
 		5947BB831E3EC2FB00E55AC9 /* onThePlaneKorean.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = onThePlaneKorean.xcdatamodel; sourceTree = "<group>"; };
 		5947BB851E3EC2FB00E55AC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -39,7 +44,8 @@
 		5947BB9C1E3EDB3F00E55AC9 /* level4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level4.txt; sourceTree = "<group>"; };
 		5947BBB31E3F2A2700E55AC9 /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		5959543A1E40BABC004FE725 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
-		5959543C1E40BCA4004FE725 /* data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = data.swift; sourceTree = "<group>"; };
+		59D501F91E57C7A500355D35 /* level5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level5.txt; sourceTree = "<group>"; };
+		59F684BC1E53269400F1FA2C /* customColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,13 +78,14 @@
 		5947BB7A1E3EC2FB00E55AC9 /* onThePlaneKorean */ = {
 			isa = PBXGroup;
 			children = (
-				5947BB7F1E3EC2FB00E55AC9 /* onThePlaneKorean.storyboard */,
+				59F684BC1E53269400F1FA2C /* customColors.swift */,
 				5947BB7B1E3EC2FB00E55AC9 /* AppDelegate.swift */,
-				5947BB7D1E3EC2FB00E55AC9 /* ViewController.swift */,
-				5959543C1E40BCA4004FE725 /* data.swift */,
+				5947BB7F1E3EC2FB00E55AC9 /* onThePlaneKorean.storyboard */,
+				591F98E61E52E86400B5F7D1 /* ExpandingTableViewCell.swift */,
 				5941DB4F1E460B190065EDCD /* MenuViewController.swift */,
 				5947BBB31E3F2A2700E55AC9 /* QuestionViewController.swift */,
 				5959543A1E40BABC004FE725 /* TutorialViewController.swift */,
+				591F98E41E52E33600B5F7D1 /* ExpandingTableViewController.swift */,
 				5947BB851E3EC2FB00E55AC9 /* Assets.xcassets */,
 				5947BB871E3EC2FB00E55AC9 /* LaunchScreen.storyboard */,
 				5947BB981E3EDB0500E55AC9 /* levels */,
@@ -95,6 +102,8 @@
 				5947BB9A1E3EDB3F00E55AC9 /* level2.txt */,
 				5947BB9B1E3EDB3F00E55AC9 /* level3.txt */,
 				5947BB9C1E3EDB3F00E55AC9 /* level4.txt */,
+				59D501F91E57C7A500355D35 /* level5.txt */,
+				591F98D81E52758E00B5F7D1 /* commonWords.txt */,
 			);
 			name = levels;
 			sourceTree = "<group>";
@@ -164,6 +173,8 @@
 				5947BB891E3EC2FB00E55AC9 /* LaunchScreen.storyboard in Resources */,
 				5947BB9D1E3EDB3F00E55AC9 /* level1.txt in Resources */,
 				5947BB861E3EC2FB00E55AC9 /* Assets.xcassets in Resources */,
+				59D501FA1E57C7A500355D35 /* level5.txt in Resources */,
+				591F98D91E52758E00B5F7D1 /* commonWords.txt in Resources */,
 				5947BB811E3EC2FB00E55AC9 /* onThePlaneKorean.storyboard in Resources */,
 				5947BBA01E3EDB3F00E55AC9 /* level4.txt in Resources */,
 			);
@@ -176,12 +187,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				591F98E71E52E86400B5F7D1 /* ExpandingTableViewCell.swift in Sources */,
 				5947BB841E3EC2FB00E55AC9 /* onThePlaneKorean.xcdatamodeld in Sources */,
+				59F684BD1E53269400F1FA2C /* customColors.swift in Sources */,
 				5947BBB41E3F2A2700E55AC9 /* QuestionViewController.swift in Sources */,
-				5947BB7E1E3EC2FB00E55AC9 /* ViewController.swift in Sources */,
+				591F98E51E52E33600B5F7D1 /* ExpandingTableViewController.swift in Sources */,
 				5947BB7C1E3EC2FB00E55AC9 /* AppDelegate.swift in Sources */,
 				5959543B1E40BABC004FE725 /* TutorialViewController.swift in Sources */,
-				5959543D1E40BCA4004FE725 /* data.swift in Sources */,
 				5941DB501E460B190065EDCD /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

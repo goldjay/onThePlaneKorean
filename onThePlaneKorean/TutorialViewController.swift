@@ -22,6 +22,17 @@ class TutorialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Changes color based on level
+        if num == 1 {
+            self.view.backgroundColor = UIColor.customYellow
+        } else if num == 2{
+            self.view.backgroundColor = UIColor.customRed
+        } else if num == 3 {
+            self.view.backgroundColor = UIColor.customBlue
+        }else {
+            self.view.backgroundColor = UIColor.customGreen
+        }
+        
         presentData()
     }
 
@@ -52,21 +63,11 @@ class TutorialViewController: UIViewController {
         }
     }
     
+    //Sets initial data for tutorial
     func presentData() {
         letterLabel.text = deck[pos][0]
         romanizationLabel.text = deck[pos][1]
         soundLabel.text = deck[pos][2]
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

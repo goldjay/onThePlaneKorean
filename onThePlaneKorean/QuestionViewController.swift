@@ -21,6 +21,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var quizNumLabel: UILabel!
     
     //From menu view
     var num: Int = 0
@@ -33,7 +34,8 @@ class QuestionViewController: UIViewController {
     var numCorrect: Int = 0
     var message = ""
     
-    var completed: Bool = false
+    //For saving data
+    //var completed: Bool = false
     var highScore: Double = 0
     
     //For the timer
@@ -46,39 +48,71 @@ class QuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        button1.layer.cornerRadius = 10 //For rounding the corners
-        button2.layer.cornerRadius = 10
-        button3.layer.cornerRadius = 10
-        
+        setButtonAndBackground()
+ 
+ 
         originalWidth = timerLabel.frame.width
         decrementAmt = originalWidth / numSecs
         
+        quizNumLabel.text = "QUIZ LEVEL \(num)"
+        
         askQuestion()
+    }
+    
+    func setButtonAndBackground() {
+        if num == 1 {
+            self.view.backgroundColor = UIColor.customYellow
+            button1.setTitleColor(UIColor.customYellow, for: .normal)
+            button2.setTitleColor(UIColor.customYellow, for: .normal)
+            button3.setTitleColor(UIColor.customYellow, for: .normal)
+        } else if num == 2{
+            self.view.backgroundColor = UIColor.customRed
+            button1.setTitleColor(UIColor.customRed, for: .normal)
+            button2.setTitleColor(UIColor.customRed, for: .normal)
+            button3.setTitleColor(UIColor.customRed, for: .normal)
+        } else if num == 3 {
+            self.view.backgroundColor = UIColor.customBlue
+            button1.setTitleColor(UIColor.customBlue, for: .normal)
+            button2.setTitleColor(UIColor.customBlue, for: .normal)
+            button3.setTitleColor(UIColor.customBlue, for: .normal)
+        }else {
+            self.view.backgroundColor = UIColor.customGreen
+            button1.setTitleColor(UIColor.customGreen, for: .normal)
+            button2.setTitleColor(UIColor.customGreen, for: .normal)
+            button3.setTitleColor(UIColor.customGreen, for: .normal)
+        }
     }
 
     func askQuestion(action: UIAlertAction! = nil) {
         
-        //resetTimerLabel()
-        
         if(!checkIfFinished()){
-            //TO DO: change shuffle to happen after user reaches end of deck
+            //TO DO:Possibly change shuffle to happen after user reaches end of deck
             let shuffledDeck = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: deck) as! [[String]]
             
             //Choose a random answer
-            correctAnswer = Int(arc4random_uniform(3))
+            correctAnswer = Int(arc4random_uniform(3) + 1)
             
-            button1.setTitle(shuffledDeck[0][1], for: UIControlState.normal)
-            button2.setTitle(shuffledDeck[1][1], for: UIControlState.normal)
-            button3.setTitle(shuffledDeck[2][1], for: UIControlState.normal)
+            //Choose if question is in Korean or english
+            let language = Int(arc4random_uniform(2))
+            if language == 1{
+                button1.setTitle(shuffledDeck[1][0], for: UIControlState.normal) //SET THIS
+                button2.setTitle(shuffledDeck[2][0], for: UIControlState.normal)
+                button3.setTitle(shuffledDeck[3][0], for: UIControlState.normal)
+                questionLabel.text = shuffledDeck[correctAnswer][1]
+            }else{
+                button1.setTitle(shuffledDeck[1][1], for: UIControlState.normal)
+                button2.setTitle(shuffledDeck[2][1], for: UIControlState.normal)
+                button3.setTitle(shuffledDeck[3][1], for: UIControlState.normal)
+                questionLabel.text = shuffledDeck[correctAnswer][0]
+            }
             
-            questionLabel.text = shuffledDeck[correctAnswer][0]
             
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(QuestionViewController.setTimerLabel), userInfo: nil, repeats: true)
         }
     }
     
     func checkIfFinished() -> Bool{
-        if numAnswered == 3 {
+        if numAnswered == 15 {
             
             timer.invalidate()
             print(Double(numCorrect/numAnswered))
@@ -86,10 +120,10 @@ class QuestionViewController: UIViewController {
             //If you did well enough, you can move to the next level
             if Double(numCorrect) / Double(numAnswered) >= 0.9 {
                 //Send back completed
-                completed = true
+                //completed = true
                 
                 //Maybe change this to a percentage if add # of cards
-                highScore =  (Double(numCorrect / numAnswered)) * 100
+                //highScore =  (Double(numCorrect / numAnswered)) * 100
                 
                 message = "You have answered \(numCorrect) out of \(numAnswered) questions correct. You can move on to the next section if you like."
             }
@@ -106,7 +140,7 @@ class QuestionViewController: UIViewController {
             numCorrect = 0
             
             
-            //TO DO: Change to transition to view instead
+            //TO DO: Possible transition to view with stats/words missed
             let ac = UIAlertController(title: nil, message: message, preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Back", style: .default, handler: backToMenu))
             ac.addAction(UIAlertAction(title: "Again", style: .default, handler: askQuestion))
@@ -138,10 +172,7 @@ class QuestionViewController: UIViewController {
         let newWidth = originalWidth - (decrementAmt * count)
         
         timerLabel.frame = CGRect(x: originXbutton, y: originYbutton, width: newWidth, height: oldHeight)
-        
-        //Update the display
-        //timerLabel
-        
+
         count += 1
     }
     
@@ -165,13 +196,22 @@ class QuestionViewController: UIViewController {
     
     func backToMenu(action: UIAlertAction! = nil) {
         //Send info back
-        //Send info back
         //sendBack?.setSentData(num: num, highScore: highScore, completed: completed)
         navigationController!.pushViewController(storyboard!.instantiateViewController(withIdentifier: "Menu") as UIViewController, animated: true)
 
     }
     
     @IBAction func answerTapped(_ sender: UIButton) {
+        //Change color of correct button
+        if let button = self.view.viewWithTag(correctAnswer) as? UIButton{
+            
+            button.backgroundColor = UIColor.blue
+            
+            UIView.animate(withDuration: 0.2, animations: {
+                button.backgroundColor = UIColor.white
+            }, completion: nil)
+            
+        }
         
         resetTimerLabel()
 
@@ -181,7 +221,6 @@ class QuestionViewController: UIViewController {
         }
         
         numAnswered += 1
-        //If have have answered enough questions (CHANGED FOR DEBUG)
         
         askQuestion()
     }
