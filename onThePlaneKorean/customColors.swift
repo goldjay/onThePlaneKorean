@@ -30,6 +30,11 @@ extension UIColor {
         return UIColor.rgb(fromHex: turboYellow)
     }
     
+    class var customLightBlue: UIColor {
+        let robinsEgg = 0x8BD6C8
+        return UIColor.rgb(fromHex: robinsEgg)
+    }
+    
     //Convert to rgb UIColor from Hex code
     class func rgb(fromHex: Int) -> UIColor {
         

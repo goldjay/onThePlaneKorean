@@ -65,21 +65,25 @@ class QuestionViewController: UIViewController {
             button1.setTitleColor(UIColor.customYellow, for: .normal)
             button2.setTitleColor(UIColor.customYellow, for: .normal)
             button3.setTitleColor(UIColor.customYellow, for: .normal)
+            navigationController?.navigationBar.barTintColor = UIColor.customYellow
         } else if num == 2{
             self.view.backgroundColor = UIColor.customRed
             button1.setTitleColor(UIColor.customRed, for: .normal)
             button2.setTitleColor(UIColor.customRed, for: .normal)
             button3.setTitleColor(UIColor.customRed, for: .normal)
+            navigationController?.navigationBar.barTintColor = UIColor.customRed
         } else if num == 3 {
             self.view.backgroundColor = UIColor.customBlue
             button1.setTitleColor(UIColor.customBlue, for: .normal)
             button2.setTitleColor(UIColor.customBlue, for: .normal)
             button3.setTitleColor(UIColor.customBlue, for: .normal)
+            navigationController?.navigationBar.barTintColor = UIColor.customBlue
         }else {
             self.view.backgroundColor = UIColor.customGreen
             button1.setTitleColor(UIColor.customGreen, for: .normal)
             button2.setTitleColor(UIColor.customGreen, for: .normal)
             button3.setTitleColor(UIColor.customGreen, for: .normal)
+            navigationController?.navigationBar.barTintColor = UIColor.customGreen
         }
     }
 

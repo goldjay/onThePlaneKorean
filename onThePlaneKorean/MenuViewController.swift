@@ -17,27 +17,15 @@ class MenuViewController: UIViewController, sendBack {
     @IBOutlet weak var practiceQuiz: UIButton!
     @IBOutlet weak var phraseBook: UIButton!
     
+    @IBOutlet weak var levelButtonWidth: NSLayoutConstraint!
+    
     var currentDeck: [[String]] = []
-    var numLevels = 6
+    //var numLevels = 6
     
     //Load info from Core Data
     //var savedDecks = [deckData]()
     
     var decks = [NSManagedObject?]()
-    
-    //isCompleted
-    //highScore
-    
-    override func viewDidAppear(_ animated: Bool) {
-        /*
-        addTopBorder(btn: level1, color: UIColor.customYellow)
-        addTopBorder(btn: level2, color: UIColor.customRed)
-        addTopBorder(btn: level3, color: UIColor.customBlue)
-        addTopBorder(btn: level4, color: UIColor.customGreen)
-        */
-    }
-    
-    
     
     func addTopBorder(btn: UIButton, color: UIColor){
         let lineView = UIView(frame: CGRect(x: 0,y: 0,width: 343,height: 5)) //Magic number FIX
@@ -52,6 +40,8 @@ class MenuViewController: UIViewController, sendBack {
         addTopBorder(btn: level2, color: UIColor.customRed)
         addTopBorder(btn: level3, color: UIColor.customBlue)
         addTopBorder(btn: level4, color: UIColor.customGreen)
+        
+        navigationController?.navigationBar.barTintColor = UIColor.customLightBlue
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -74,14 +64,6 @@ class MenuViewController: UIViewController, sendBack {
         }
         
         print(decks.count)
- 
-        
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func levelSelected(_ sender: UIButton) {
@@ -89,8 +71,10 @@ class MenuViewController: UIViewController, sendBack {
         let num = sender.tag
         
         //Move button to the side
-        UIView.animate(withDuration: 0.75, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
         
+            self.view.layoutIfNeeded() //Update constraints
+            
             var offset = 0;
             
             let btn : CGRect = sender.frame
@@ -112,7 +96,12 @@ class MenuViewController: UIViewController, sendBack {
             
             sender.frame = CGRect(x: originXbutton, y: originYbutton, width: originWidthbutton+CGFloat(offset), height: originHeightbutton)
             
+            //Update width constraint
+            self.levelButtonWidth.constant = originWidthbutton + CGFloat(offset)
+            self.view.layoutIfNeeded() //Update constraints
+            
             }, completion: nil)
+        
     }
     
     
@@ -235,8 +224,6 @@ class MenuViewController: UIViewController, sendBack {
                     currentDeck.append(card)
                 }
             }
-            
-            //print(currentDeck)
             
             if let vc = storyboard?.instantiateViewController(withIdentifier: "Question") as? QuestionViewController {
                 
