@@ -29,11 +29,12 @@ class MenuViewController: UIViewController, sendBack {
     //highScore
     
     override func viewDidAppear(_ animated: Bool) {
+        /*
         addTopBorder(btn: level1, color: UIColor.customYellow)
         addTopBorder(btn: level2, color: UIColor.customRed)
         addTopBorder(btn: level3, color: UIColor.customBlue)
         addTopBorder(btn: level4, color: UIColor.customGreen)
-        
+        */
     }
     
     
@@ -47,28 +48,34 @@ class MenuViewController: UIViewController, sendBack {
     //Get data from Coredata
     override func viewWillAppear(_ animated: Bool) {
       
+        addTopBorder(btn: level1, color: UIColor.customYellow)
+        addTopBorder(btn: level2, color: UIColor.customRed)
+        addTopBorder(btn: level3, color: UIColor.customBlue)
+        addTopBorder(btn: level4, color: UIColor.customGreen)
         
-        /*
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
         
         //Managed object context
         let managedContext = appDelegate.persistentContainer.viewContext
-        
+ 
+        //DeleteAllData() //Clears core data for debug
+ 
         //Fetch from Core Data
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "DeckData")
         
         do {
             decks = try managedContext.fetch(fetchRequest)
             print("Loading data")
+            print(decks)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         
-        print(decks)
+        print(decks.count)
  
-        */
+        
     }
     
 
@@ -112,25 +119,21 @@ class MenuViewController: UIViewController, sendBack {
     
     
     //Do something with the data returned
-    func setSentData(num: Int,highScore: Double, completed: Bool){
+    func setSentData(highScore: Double){
         
         print("YOU GOT THIS SCORE!")
         print(highScore)
-        print("AND COMPLETED")
-        print(completed)
-        print("AND NUM:")
-        print(num)
         
         //save to core data
-        self.save(num: num, highScore: highScore, completed: completed)
+        self.save(highScore: highScore)
     }
  
     
     //Saves to core data
-    func save(num: Int, highScore: Double, completed: Bool){
+    func save(highScore: Double){
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            print("COULD NOT")
+            print("COULD NOT SAVE")
             return
         }
         
@@ -138,20 +141,34 @@ class MenuViewController: UIViewController, sendBack {
         let managedContext = appDelegate.persistentContainer.viewContext
         
         //Create a new managed object and insert it into managed object context
-        let entity = NSEntityDescription.entity(forEntityName: "DeckData", in: managedContext)!
         
-        let deck = NSManagedObject(entity: entity, insertInto: managedContext)
+        print("THIS MANY DECKS: ")
+        print(decks.count)
         
-        //Set value of managed object
-        deck.setValue(num, forKeyPath: "num")
-        deck.setValue(highScore, forKeyPath: "highScore")
-        deck.setValue(completed, forKey: "completed")
+        if decks.count == 0 {
+            print("FIRST DECK CREATED")
+            //Create a new managed object and set its high score
+            let entity = NSEntityDescription.entity(forEntityName: "DeckData", in: managedContext)!
+            let deck = NSManagedObject(entity: entity, insertInto: managedContext)
+            deck.setValue(highScore, forKeyPath: "highScore")
+        } else{
+            //Otherwise update the managed object
+            let currHigh = decks[0]?.value(forKey: "highScore") as! Double
+            
+            print("CURRENT HIGH: ")
+            print(currHigh)
+            
+            if(currHigh < highScore){
+                print("UPDATING THE HIGH SCORE to \(highScore)")
+                //Change the highscore
+                decks[0]?.setValue(highScore, forKey: "highScore")
+            }
+        }
         
-        
-        //Commit changes to person and save to disk
+        //Commit changes and save to disk
         do {
             try managedContext.save()
-            decks.append(deck)
+            //decks.append(deck)
             print("SAVED!")
         } catch let error as NSError {
             print("Could not save. \(error.userInfo)")
@@ -262,5 +279,20 @@ class MenuViewController: UIViewController, sendBack {
         }
         
     }
-
+    
+    //DEBUG FOR DELETE CORE DATA
+    func DeleteAllData(){
+        
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: "DeckData"))
+        do {
+            try managedContext.execute(DelAllReqVar)
+        }
+        catch {
+            print(error)
+        }
+    }
+    
 }

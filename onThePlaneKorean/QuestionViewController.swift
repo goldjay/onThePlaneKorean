@@ -10,7 +10,7 @@ import UIKit
 import GameplayKit //For shuffling the array
 
 protocol sendBack {
-    func setSentData(num: Int, highScore: Double, completed: Bool)
+    func setSentData(highScore: Double)
 }
 
 
@@ -95,7 +95,7 @@ class QuestionViewController: UIViewController {
             //Choose if question is in Korean or english
             let language = Int(arc4random_uniform(2))
             if language == 1{
-                button1.setTitle(shuffledDeck[1][0], for: UIControlState.normal) //SET THIS
+                button1.setTitle(shuffledDeck[1][0], for: UIControlState.normal)
                 button2.setTitle(shuffledDeck[2][0], for: UIControlState.normal)
                 button3.setTitle(shuffledDeck[3][0], for: UIControlState.normal)
                 questionLabel.text = shuffledDeck[correctAnswer][1]
@@ -112,18 +112,16 @@ class QuestionViewController: UIViewController {
     }
     
     func checkIfFinished() -> Bool{
-        if numAnswered == 15 {
+        if numAnswered == (deck.count * 2) { //TO DO: CHANGE TO BE RELATIVE TO DECK SIZE
             
             timer.invalidate()
             print(Double(numCorrect/numAnswered))
             
             //If you did well enough, you can move to the next level
             if Double(numCorrect) / Double(numAnswered) >= 0.9 {
-                //Send back completed
-                //completed = true
                 
                 //Maybe change this to a percentage if add # of cards
-                //highScore =  (Double(numCorrect / numAnswered)) * 100
+                highScore =  (Double(numCorrect / numAnswered)) * 100
                 
                 message = "You have answered \(numCorrect) out of \(numAnswered) questions correct. You can move on to the next section if you like."
             }
@@ -132,8 +130,11 @@ class QuestionViewController: UIViewController {
                 message = "You have answered \(numCorrect) out of \(numAnswered) questions correct. I think you could use more practice."
             }
             
+            print("You got this many right: \(numCorrect)\n")
+            print("And you answered this many: \(numAnswered)\n")
+            
             //Send info back
-            //sendBack?.setSentData(num: num, highScore: highScore, completed: completed)
+            sendBack?.setSentData(highScore: highScore)
             
             //Reset stats
             numAnswered = 0
@@ -171,6 +172,8 @@ class QuestionViewController: UIViewController {
         let oldHeight = frmPlay.size.height
         let newWidth = originalWidth - (decrementAmt * count)
         
+        
+        
         timerLabel.frame = CGRect(x: originXbutton, y: originYbutton, width: newWidth, height: oldHeight)
 
         count += 1
@@ -196,7 +199,7 @@ class QuestionViewController: UIViewController {
     
     func backToMenu(action: UIAlertAction! = nil) {
         //Send info back
-        //sendBack?.setSentData(num: num, highScore: highScore, completed: completed)
+        sendBack?.setSentData(highScore: highScore)
         navigationController!.pushViewController(storyboard!.instantiateViewController(withIdentifier: "Menu") as UIViewController, animated: true)
 
     }

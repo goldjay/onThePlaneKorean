@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "onThePlaneKorean/QuestionViewController.swift"
-            timestampString = "509069900.646835"
+            timestampString = "509688162.341351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "answerTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
