@@ -17,7 +17,16 @@ class MenuViewController: UIViewController, sendBack {
     @IBOutlet weak var practiceQuiz: UIButton!
     @IBOutlet weak var phraseBook: UIButton!
     
-    @IBOutlet weak var levelButtonWidth: NSLayoutConstraint!
+    @IBOutlet weak var level1ButtonWidth: NSLayoutConstraint! //Set individually?
+    
+    @IBOutlet weak var level2ButtonWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var level3ButtonWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var level4ButtonWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var level5ButtonWidth: NSLayoutConstraint!
+    
     
     var currentDeck: [[String]] = []
     //var numLevels = 6
@@ -68,12 +77,35 @@ class MenuViewController: UIViewController, sendBack {
 
     @IBAction func levelSelected(_ sender: UIButton) {
         
+        var selectedConstraint: NSLayoutConstraint! //Not a very good solution
+        
+        switch(sender.tag){
+        case 1:
+            selectedConstraint = level1ButtonWidth
+            break
+        case 2:
+            selectedConstraint = level2ButtonWidth
+            break
+        case 3:
+            selectedConstraint = level3ButtonWidth
+            break
+        case 4:
+            selectedConstraint = level4ButtonWidth
+            break
+        case 5:
+            selectedConstraint = level5ButtonWidth
+            break
+        default:
+            break
+        }
+        
         let num = sender.tag
         
         //Move button to the side
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
         
             self.view.layoutIfNeeded() //Update constraints
+            
             
             var offset = 0;
             
@@ -85,6 +117,7 @@ class MenuViewController: UIViewController, sendBack {
             let originWidthbutton = btn.size.width
             let originHeightbutton = btn.size.height
             
+            
             if originWidthbutton > 200 {
                 offset = -300
                 //sender.frame = frmPlay
@@ -94,14 +127,24 @@ class MenuViewController: UIViewController, sendBack {
                 sender.setTitle("LEVEL \(num) ", for: .normal)
             }
             
+            
+            /*
+            //TEMP
+            if originWidthbutton > 200 {
+                offset = -300
+                sender.setTitle("\(num)", for: .normal)
+            }else{
+                return
+            }
+            */
+            
             sender.frame = CGRect(x: originXbutton, y: originYbutton, width: originWidthbutton+CGFloat(offset), height: originHeightbutton)
             
-            //Update width constraint
-            self.levelButtonWidth.constant = originWidthbutton + CGFloat(offset)
+            //Update width constraint COULD DO DIFFERENT ONE FOR EACH BUTTON BUT SEEMS LIKE A LOT OF DUPE CODE
+            selectedConstraint.constant = originWidthbutton + CGFloat(offset)
             self.view.layoutIfNeeded() //Update constraints
             
             }, completion: nil)
-        
     }
     
     
