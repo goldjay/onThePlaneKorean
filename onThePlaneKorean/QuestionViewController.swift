@@ -57,14 +57,14 @@ class QuestionViewController: UIViewController {
  
  
         originalWidth = timerLabel.frame.width
-        decrementAmt = originalWidth / numSecs
+        decrementAmt = originalWidth / speed //Global options variable
         
         quizNumLabel.text = "QUIZ LEVEL \(num)"
         
         askQuestion()
     }
     
-    func setButtonAndBackground(num: Int) {  //TO DO: REFACTOR CLEAN
+    func setButtonAndBackground(num: Int) {
         
         var selectedColor: UIColor
         
@@ -94,27 +94,30 @@ class QuestionViewController: UIViewController {
 
     func askQuestion(action: UIAlertAction! = nil) {
         
+        var deckNum = 0
+        var answerNum = 1
+        
         if(!checkIfFinished()){
             let shuffledDeck = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: deck) as! [[String]]
             
             //Choose a random answer
             correctAnswer = Int(arc4random_uniform(4) + 1)
             
-            //Choose if question is in Korean or english TO DO: REFACTOR
+            //Choose if question is in Korean or english
             let language = Int(arc4random_uniform(2))
             if language == 1{
-                button1.setTitle(shuffledDeck[1][0], for: UIControlState.normal)
-                button2.setTitle(shuffledDeck[2][0], for: UIControlState.normal)
-                button3.setTitle(shuffledDeck[3][0], for: UIControlState.normal)
-                button4.setTitle(shuffledDeck[4][0], for: UIControlState.normal)
-                questionLabel.text = shuffledDeck[correctAnswer][1]
+                deckNum = 0
+                answerNum = 1
             }else{
-                button1.setTitle(shuffledDeck[1][1], for: UIControlState.normal)
-                button2.setTitle(shuffledDeck[2][1], for: UIControlState.normal)
-                button3.setTitle(shuffledDeck[3][1], for: UIControlState.normal)
-                button4.setTitle(shuffledDeck[4][1], for: UIControlState.normal)
-                questionLabel.text = shuffledDeck[correctAnswer][0]
+                deckNum = 1
+                answerNum = 0
             }
+            
+            button1.setTitle(shuffledDeck[1][deckNum], for: UIControlState.normal)
+            button2.setTitle(shuffledDeck[2][deckNum], for: UIControlState.normal)
+            button3.setTitle(shuffledDeck[3][deckNum], for: UIControlState.normal)
+            button4.setTitle(shuffledDeck[4][deckNum], for: UIControlState.normal)
+            questionLabel.text = shuffledDeck[correctAnswer][answerNum]
             
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(QuestionViewController.setTimerLabel), userInfo: nil, repeats: true)
         }
@@ -132,7 +135,7 @@ class QuestionViewController: UIViewController {
                 //Maybe change this to a percentage if add # of cards
                 highScore =  (Double(numCorrect / numAnswered)) * 100
                 
-                message = "You have answered \(numCorrect) out of \(numAnswered) questions correct. You can move on to the next section if you like."
+                message = "You have answered \(numCorrect) out of \(numAnswered) questions correct."
             }
             else{
                 //Message about trying harder
@@ -165,9 +168,15 @@ class QuestionViewController: UIViewController {
     {
         let currWidth = timerLabel.frame.width
         
+        //If you ran out of time
         if currWidth <= 0
         {
             numAnswered += 1
+            //Alert the correct answer
+            let correctButton: UIButton = self.view.viewWithTag(correctAnswer) as! UIButton
+            
+            buttonFlash(sender: correctButton, color: UIColor.customLightGreen)
+            
             resetTimerLabel()
             askQuestion()
             return
@@ -221,14 +230,15 @@ class QuestionViewController: UIViewController {
     
     @IBAction func answerTapped(_ sender: UIButton) {
         //Change color of correct button
-        if let button = self.view.viewWithTag(correctAnswer) as? UIButton{
+        let correctButton: UIButton = self.view.viewWithTag(correctAnswer) as! UIButton
+        
+        if sender == correctButton{
+            buttonFlash(sender: sender, color: UIColor.customLightGreen)
             
-            button.backgroundColor = UIColor.blue
+        }else{
+            buttonFlash(sender: sender, color: UIColor.customLightRed)
             
-            UIView.animate(withDuration: 0.2, animations: {
-                button.backgroundColor = UIColor.white
-            }, completion: nil)
-            
+            buttonFlash(sender: correctButton, color: UIColor.customLightGreen)
         }
         
         resetTimerLabel()
@@ -240,12 +250,40 @@ class QuestionViewController: UIViewController {
         
         numAnswered += 1
         
-        askQuestion()
+        //wait a moment before asking again
+        delayWithSeconds(1){
+            self.askQuestion()
+        }
+        
     }
     
     func updateWidthConstraint(num: CGFloat) {
         timerWidthConstraint.constant = num
         self.view.layoutIfNeeded() //Update constraints
+    }
+    
+    func buttonFlash(sender: UIButton, color: UIColor){
+        //Fade in
+        UIView.animate(withDuration: 0.4, animations: {
+            sender.backgroundColor = color
+            sender.alpha = 0.8
+            }, completion: nil)
+        //Pause
+        delayWithSeconds(0.5){
+            //Fade out
+            UIView.animate(withDuration: 0.4, animations: {
+                sender.backgroundColor = UIColor.white
+                sender.alpha = 1
+                }, completion: nil)
+        }
+        
+        
+    }
+    
+    func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            completion()
+        }
     }
 
 }

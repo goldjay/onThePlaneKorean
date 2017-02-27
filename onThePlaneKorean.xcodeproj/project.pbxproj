@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5914C4471E64B6F700A09100 /* options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914C4461E64B6F700A09100 /* options.swift */; };
 		591F98D91E52758E00B5F7D1 /* commonWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = 591F98D81E52758E00B5F7D1 /* commonWords.txt */; };
 		591F98E51E52E33600B5F7D1 /* ExpandingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591F98E41E52E33600B5F7D1 /* ExpandingTableViewController.swift */; };
 		591F98E71E52E86400B5F7D1 /* ExpandingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591F98E61E52E86400B5F7D1 /* ExpandingTableViewCell.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5914C4461E64B6F700A09100 /* options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = options.swift; sourceTree = "<group>"; };
 		591F98D81E52758E00B5F7D1 /* commonWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = commonWords.txt; sourceTree = "<group>"; };
 		591F98E41E52E33600B5F7D1 /* ExpandingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandingTableViewController.swift; sourceTree = "<group>"; };
 		591F98E61E52E86400B5F7D1 /* ExpandingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandingTableViewCell.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				5947BBB31E3F2A2700E55AC9 /* QuestionViewController.swift */,
 				5959543A1E40BABC004FE725 /* TutorialViewController.swift */,
 				591F98E41E52E33600B5F7D1 /* ExpandingTableViewController.swift */,
+				5914C4461E64B6F700A09100 /* options.swift */,
 				59F684BC1E53269400F1FA2C /* customColors.swift */,
 				5947BB851E3EC2FB00E55AC9 /* Assets.xcassets */,
 				5947BB871E3EC2FB00E55AC9 /* LaunchScreen.storyboard */,
@@ -193,6 +196,7 @@
 				5947BBB41E3F2A2700E55AC9 /* QuestionViewController.swift in Sources */,
 				591F98E51E52E33600B5F7D1 /* ExpandingTableViewController.swift in Sources */,
 				5947BB7C1E3EC2FB00E55AC9 /* AppDelegate.swift in Sources */,
+				5914C4471E64B6F700A09100 /* options.swift in Sources */,
 				5959543B1E40BABC004FE725 /* TutorialViewController.swift in Sources */,
 				5941DB501E460B190065EDCD /* MenuViewController.swift in Sources */,
 			);

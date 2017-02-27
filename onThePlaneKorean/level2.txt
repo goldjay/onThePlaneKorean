@@ -12,3 +12,8 @@
 ㅌ:t:table,
 ㅍ:p:pizza, place
 ㅎ:h:hat, happy
+ㄲ:kk:hard k
+ㄸ:dd:hard d
+ㅉ:jj:hard j
+ㅃ:bb:hard b
+ㅆ:ss:hard s

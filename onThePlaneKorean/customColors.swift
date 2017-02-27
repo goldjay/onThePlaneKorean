@@ -20,9 +20,19 @@ extension UIColor {
         return UIColor.rgb(fromHex: terracottaRed)
     }
     
+    class var customLightRed: UIColor {
+        let lightRed = 0xf29a8d
+        return UIColor.rgb(fromHex: lightRed)
+    }
+    
     class var customGreen: UIColor {
         let fernGreen = 0x61BD6D
         return UIColor.rgb(fromHex: fernGreen)
+    }
+    
+    class var customLightGreen: UIColor {
+        let lightGreen = 0xA5D9AC
+        return UIColor.rgb(fromHex: lightGreen)
     }
     
     class var customYellow: UIColor {

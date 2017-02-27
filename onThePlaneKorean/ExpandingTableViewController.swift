@@ -51,6 +51,7 @@ class ExpandingTableViewController: UITableViewController {
         
         content.expanded = !content.expanded
         tableView.reloadRows(at: [indexPath], with: .automatic)
+        
     }
     
 

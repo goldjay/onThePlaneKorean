@@ -1,11 +1,23 @@
-ㅐ:ae:May
-ㅒ:yay:yay!
-ㅔ:eh:eh?
-ㅖ:yeh:yes
-ㅘ:wah:want, wand
-ㅙ:wae:way
-ㅚ:weh:wet,
-ㅝ:wuh:wonderful
-ㅞ:way:oo + eh
-ㅟ:wee:weed, weep
-ㅢ:oui:eu + ee
+가스:ga-soo:stove
+비:bi:rain
+아이:ah-ee:child
+문:moon:door
+피치:pi-chi:peach
+바나나:ba-na-na:banana
+아메리카:ah-meh-ri-kah:America
+아메리카노:ah-meh-ri-ka-no:Americano
+왜:wae:why
+라디오:ra-di-oh:radio
+게임:geh-im:game
+노트:no-too:note
+뉴스:nyoo-seu:news
+러시아:ruh-shi-ah:Russia
+메뉴:meh-nyoo:menu
+아파트:ah-pah-teu:apartment
+카드:kah-deu:card
+버스:buh-seu:bus
+미터:mee-tuh:meter
+비디오:bee-dee-oh:video
+스트레스:seu-teu-reh-seu:stress
+스포츠:seu-poh-cheu:sports
+캐나다:kae-nah-dah:Canada
