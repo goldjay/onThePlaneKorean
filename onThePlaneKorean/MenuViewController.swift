@@ -79,6 +79,7 @@ class MenuViewController: UIViewController, sendBack {
         
         var selectedConstraint: NSLayoutConstraint! //Not a very good solution
         
+        //Set constraint to be altered (width of menu button)
         switch(sender.tag){
         case 1:
             selectedConstraint = level1ButtonWidth
@@ -127,20 +128,8 @@ class MenuViewController: UIViewController, sendBack {
                 sender.setTitle("LEVEL \(num) ", for: .normal)
             }
             
-            
-            /*
-            //TEMP
-            if originWidthbutton > 200 {
-                offset = -300
-                sender.setTitle("\(num)", for: .normal)
-            }else{
-                return
-            }
-            */
-            
             sender.frame = CGRect(x: originXbutton, y: originYbutton, width: originWidthbutton+CGFloat(offset), height: originHeightbutton)
             
-            //Update width constraint COULD DO DIFFERENT ONE FOR EACH BUTTON BUT SEEMS LIKE A LOT OF DUPE CODE
             selectedConstraint.constant = originWidthbutton + CGFloat(offset)
             self.view.layoutIfNeeded() //Update constraints
             
@@ -243,9 +232,6 @@ class MenuViewController: UIViewController, sendBack {
             }
         }
     }
-    
-    //TO DO: Add function for converting file to array of arrays string filename, string VC name
-    
     
     @IBAction func selectQuiz(_ sender: UIButton) {
         currentDeck = [] //Clear deck from previous selection

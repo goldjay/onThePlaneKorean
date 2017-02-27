@@ -19,9 +19,14 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
+    @IBOutlet weak var button4: UIButton!
+    
+    
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var quizNumLabel: UILabel!
+    
+    @IBOutlet weak var timerWidthConstraint: NSLayoutConstraint!
     
     //From menu view
     var num: Int = 0
@@ -48,7 +53,7 @@ class QuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setButtonAndBackground()
+        setButtonAndBackground(num: num)
  
  
         originalWidth = timerLabel.frame.width
@@ -59,64 +64,64 @@ class QuestionViewController: UIViewController {
         askQuestion()
     }
     
-    func setButtonAndBackground() {
-        if num == 1 {
-            self.view.backgroundColor = UIColor.customYellow
-            button1.setTitleColor(UIColor.customYellow, for: .normal)
-            button2.setTitleColor(UIColor.customYellow, for: .normal)
-            button3.setTitleColor(UIColor.customYellow, for: .normal)
-            navigationController?.navigationBar.barTintColor = UIColor.customYellow
-        } else if num == 2{
-            self.view.backgroundColor = UIColor.customRed
-            button1.setTitleColor(UIColor.customRed, for: .normal)
-            button2.setTitleColor(UIColor.customRed, for: .normal)
-            button3.setTitleColor(UIColor.customRed, for: .normal)
-            navigationController?.navigationBar.barTintColor = UIColor.customRed
-        } else if num == 3 {
-            self.view.backgroundColor = UIColor.customBlue
-            button1.setTitleColor(UIColor.customBlue, for: .normal)
-            button2.setTitleColor(UIColor.customBlue, for: .normal)
-            button3.setTitleColor(UIColor.customBlue, for: .normal)
-            navigationController?.navigationBar.barTintColor = UIColor.customBlue
-        }else {
-            self.view.backgroundColor = UIColor.customGreen
-            button1.setTitleColor(UIColor.customGreen, for: .normal)
-            button2.setTitleColor(UIColor.customGreen, for: .normal)
-            button3.setTitleColor(UIColor.customGreen, for: .normal)
-            navigationController?.navigationBar.barTintColor = UIColor.customGreen
+    func setButtonAndBackground(num: Int) {  //TO DO: REFACTOR CLEAN
+        
+        var selectedColor: UIColor
+        
+        switch(num){
+        case 1:
+            selectedColor = UIColor.customYellow
+            break
+        case 2:
+            selectedColor = UIColor.customRed
+            break
+        case 3:
+            selectedColor = UIColor.customBlue
+            break
+        default:
+            selectedColor = UIColor.customGreen
+            break
         }
+        
+        self.view.backgroundColor = selectedColor
+        button1.setTitleColor(selectedColor, for: .normal)
+        button2.setTitleColor(selectedColor, for: .normal)
+        button3.setTitleColor(selectedColor, for: .normal)
+        button4.setTitleColor(selectedColor, for: .normal)
+        navigationController?.navigationBar.barTintColor = selectedColor
+        
     }
 
     func askQuestion(action: UIAlertAction! = nil) {
         
         if(!checkIfFinished()){
-            //TO DO:Possibly change shuffle to happen after user reaches end of deck
             let shuffledDeck = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: deck) as! [[String]]
             
             //Choose a random answer
-            correctAnswer = Int(arc4random_uniform(3) + 1)
+            correctAnswer = Int(arc4random_uniform(4) + 1)
             
-            //Choose if question is in Korean or english
+            //Choose if question is in Korean or english TO DO: REFACTOR
             let language = Int(arc4random_uniform(2))
             if language == 1{
                 button1.setTitle(shuffledDeck[1][0], for: UIControlState.normal)
                 button2.setTitle(shuffledDeck[2][0], for: UIControlState.normal)
                 button3.setTitle(shuffledDeck[3][0], for: UIControlState.normal)
+                button4.setTitle(shuffledDeck[4][0], for: UIControlState.normal)
                 questionLabel.text = shuffledDeck[correctAnswer][1]
             }else{
                 button1.setTitle(shuffledDeck[1][1], for: UIControlState.normal)
                 button2.setTitle(shuffledDeck[2][1], for: UIControlState.normal)
                 button3.setTitle(shuffledDeck[3][1], for: UIControlState.normal)
+                button4.setTitle(shuffledDeck[4][1], for: UIControlState.normal)
                 questionLabel.text = shuffledDeck[correctAnswer][0]
             }
-            
             
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(QuestionViewController.setTimerLabel), userInfo: nil, repeats: true)
         }
     }
     
     func checkIfFinished() -> Bool{
-        if numAnswered == (deck.count * 2) { //TO DO: CHANGE TO BE RELATIVE TO DECK SIZE
+        if numAnswered == (deck.count) {
             
             timer.invalidate()
             print(Double(numCorrect/numAnswered))
@@ -165,6 +170,7 @@ class QuestionViewController: UIViewController {
             numAnswered += 1
             resetTimerLabel()
             askQuestion()
+            return
         }
         
         
@@ -176,10 +182,14 @@ class QuestionViewController: UIViewController {
         let oldHeight = frmPlay.size.height
         let newWidth = originalWidth - (decrementAmt * count)
         
+        UIView.animate(withDuration: 0.01, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
+            
+            self.timerLabel.frame = CGRect(x: originXbutton, y: originYbutton, width: newWidth, height: oldHeight)
+            //self.updateWidthConstraint(num: newWidth)
+            //self.timerWidthConstraint.constant = newWidth
+        }, completion: nil)
         
-        
-        timerLabel.frame = CGRect(x: originXbutton, y: originYbutton, width: newWidth, height: oldHeight)
-
+        //updateWidthConstraint(num: newWidth)
         count += 1
     }
     
@@ -198,6 +208,7 @@ class QuestionViewController: UIViewController {
         
         timer.invalidate()
         count = 0
+        //updateWidthConstraint(num: newWidth)
     }
 
     
@@ -230,6 +241,11 @@ class QuestionViewController: UIViewController {
         numAnswered += 1
         
         askQuestion()
+    }
+    
+    func updateWidthConstraint(num: CGFloat) {
+        timerWidthConstraint.constant = num
+        self.view.layoutIfNeeded() //Update constraints
     }
 
 }
