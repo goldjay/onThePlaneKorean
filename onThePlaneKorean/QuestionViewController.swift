@@ -88,6 +88,10 @@ class QuestionViewController: UIViewController {
         button2.setTitleColor(selectedColor, for: .normal)
         button3.setTitleColor(selectedColor, for: .normal)
         button4.setTitleColor(selectedColor, for: .normal)
+        minSizeButtonText(myButton: button1)
+        minSizeButtonText(myButton: button2)
+        minSizeButtonText(myButton: button3)
+        minSizeButtonText(myButton: button4)
         navigationController?.navigationBar.barTintColor = selectedColor
         
     }
@@ -175,7 +179,7 @@ class QuestionViewController: UIViewController {
             //Alert the correct answer
             let correctButton: UIButton = self.view.viewWithTag(correctAnswer) as! UIButton
             
-            buttonFlash(sender: correctButton, color: UIColor.customLightGreen)
+            buttonFlash(sender: correctButton, color: UIColor.customLightBlue)
             
             resetTimerLabel()
             askQuestion()
@@ -233,12 +237,12 @@ class QuestionViewController: UIViewController {
         let correctButton: UIButton = self.view.viewWithTag(correctAnswer) as! UIButton
         
         if sender == correctButton{
-            buttonFlash(sender: sender, color: UIColor.customLightGreen)
+            buttonFlash(sender: sender, color: UIColor.customLightBlue)
             
         }else{
             buttonFlash(sender: sender, color: UIColor.customLightRed)
             
-            buttonFlash(sender: correctButton, color: UIColor.customLightGreen)
+            buttonFlash(sender: correctButton, color: UIColor.customLightBlue)
         }
         
         resetTimerLabel()
@@ -266,7 +270,6 @@ class QuestionViewController: UIViewController {
         //Fade in
         UIView.animate(withDuration: 0.4, animations: {
             sender.backgroundColor = color
-            sender.alpha = 0.8
             }, completion: nil)
         //Pause
         delayWithSeconds(0.5){
@@ -285,5 +288,10 @@ class QuestionViewController: UIViewController {
             completion()
         }
     }
-
+    
+    func minSizeButtonText(myButton: UIButton){
+        myButton.titleLabel?.minimumScaleFactor = 0.5
+        myButton.titleLabel?.numberOfLines = 0
+        myButton.titleLabel?.adjustsFontSizeToFitWidth = true
+    }
 }

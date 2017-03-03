@@ -29,7 +29,7 @@ class MenuViewController: UIViewController, sendBack {
     
     
     var currentDeck: [[String]] = []
-    //var numLevels = 6
+    var num = 0
     
     //Load info from Core Data
     //var savedDecks = [deckData]()
@@ -202,7 +202,7 @@ class MenuViewController: UIViewController, sendBack {
     @IBAction func selectTutorial(_ sender: UIButton) {
         currentDeck = [] //Clear deck from previous selection
         
-        let num = sender.tag
+        num = sender.tag
         
         if let levelFilePath = Bundle.main.path(forResource: "level\(num)", ofType: "txt") {
             
@@ -222,7 +222,7 @@ class MenuViewController: UIViewController, sendBack {
             
             print(currentDeck)
             
-            if let vc = storyboard?.instantiateViewController(withIdentifier: "Tutorial") as? TutorialViewController {
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "Lesson") as? LessonViewController {
                 
                 vc.deck = currentDeck
                 vc.num = num
@@ -230,6 +230,7 @@ class MenuViewController: UIViewController, sendBack {
                 
                 navigationController?.pushViewController(vc, animated: true)
             }
+ 
         }
     }
     

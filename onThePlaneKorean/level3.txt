@@ -6,13 +6,13 @@
 바나나:ba-na-na:banana
 아메리카:ah-meh-ri-kah:America
 아메리카노:ah-meh-ri-ka-no:Americano
-왜:wae:why
 라디오:ra-di-oh:radio
 게임:geh-im:game
 노트:no-too:note
 뉴스:nyoo-seu:news
 러시아:ruh-shi-ah:Russia
 메뉴:meh-nyoo:menu
+이미:ee-mee:already
 아파트:ah-pah-teu:apartment
 카드:kah-deu:card
 버스:buh-seu:bus
@@ -20,4 +20,21 @@
 비디오:bee-dee-oh:video
 스트레스:seu-teu-reh-seu:stress
 스포츠:seu-poh-cheu:sports
+나라:nah-rah:country
 캐나다:kae-nah-dah:Canada
+커피:kuh-pi:coffee
+테니스:teh-nee-seu:tennis
+피자:pee-jah:pizza
+티브이:tee-beu-ee:TV
+아이스크림:ah-ee-seu-keu-reem:ice cream
+더치페이:duh-chi-peh-ee:dutch pay
+샤프:syah-peu:mechanical pencil
+서비스:suh-bi-seu:service
+시에프:shi-eh-peu:commercial film
+크림:keu-lim:cream
+파스타:pa-seu-tah:pasta
+파마:pah-mah:perm
+데모:deh-moh:demonstration
+다큐:dah-kyoo:documentary
+체크:cheh-keu:checkered
+오토바이:oh-toh-bah-ee:motorcycle

@@ -36,18 +36,21 @@ class TutorialViewController: UIViewController {
         presentData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     @IBAction func swipeRight(_ sender: AnyObject) {
         //Check
         if(pos > 0){
             pos -= 1
             presentData()
         }
+        if(pos <= 0){
+            //TO DO: Go back to the lesson
+            
+            //MAYBE: INCLUDE A SKIP BUTTON
+        }
         
     }
+    
+    
     @IBAction func swipeLeft(_ sender: AnyObject) {
         //Check if we are out of bounds
         if(pos + 1 == deck.count){

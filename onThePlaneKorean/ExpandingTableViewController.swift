@@ -16,8 +16,6 @@ class ExpandingTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(deck.count)
         
         tableView.dataSource = self
         tableView.delegate = self
