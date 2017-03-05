@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "onThePlaneKorean/QuestionViewController.swift"
-            timestampString = "509835700.156929"
+            timestampString = "510388232.248984"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "askQuestion(action:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

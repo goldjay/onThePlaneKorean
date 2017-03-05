@@ -33,7 +33,7 @@
 화이트:hwah-ee-teu:whiteout
 클립:keu-lip:paperclip
 크레용:keu-reh-yong:crayon
-포켓볼:poh-keht:bohl:pocketball
+포켓볼:poh-keht-bohl:pocketball
 팬티:paen-tee:underwear
 셀프:sehl-peu:self-service
 개그맨:gae-geu-maen:comedian

@@ -1,15 +1,15 @@
 ㄱ:g/k:soft g sound
 ㄴ:n:nice, now
-ㄷ:d/t:tongue on the back of your front teeth
-ㄹ:l/r:tongue in middle of roof of mouth
+ㄷ:n and front, d at end: neck, bad
+ㄹ:r at front l at end:ran, feel
 ㅁ:m:map, magic
 ㅂ:b/p:soft b sound
 ㅅ:s:soft s
-ㅇ:ng or placeholder: ng at the end of a group, placeholder at the beginning
+ㅇ:nothing at front, ng at end: bang
 ㅈ:j:jam, jump
-ㅊ:ch:chicken, champion
+ㅊ:ch:chicken, China
 ㅋ:k:kite, kind
-ㅌ:t:table,
+ㅌ:t:table, tap
 ㅍ:p:pizza, place
 ㅎ:h:hat, happy
 ㄲ:kk:hard k

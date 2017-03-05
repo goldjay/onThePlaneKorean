@@ -5,7 +5,7 @@
 ㅗ:oh:code, mode
 ㅛ:yo:yoghurt
 ㅜ:oo:cool, fool
-ㅠ:yoo:hey you
+ㅠ:yoo:view
 ㅣ:ee:beef, team
 ㅡ:eu:bleu cheese
 ㅐ:ae:May

@@ -26,7 +26,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var quizNumLabel: UILabel!
     
-    @IBOutlet weak var timerWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var timerWidthConstraint: NSLayoutConstraint! //TO DO: FIX CONSTRAINTS
     
     //From menu view
     var num: Int = 0
@@ -55,12 +55,11 @@ class QuestionViewController: UIViewController {
         
         setButtonAndBackground(num: num)
  
- 
+        //Set original width for timer bar
         originalWidth = timerLabel.frame.width
         decrementAmt = originalWidth / speed //Global options variable
         
         quizNumLabel.text = "QUIZ LEVEL \(num)"
-        
         askQuestion()
     }
     
@@ -97,6 +96,12 @@ class QuestionViewController: UIViewController {
     }
 
     func askQuestion(action: UIAlertAction! = nil) {
+        //TO DO: SIMPLIFY
+        let selectedColor = self.view.backgroundColor
+        self.button1.setTitleColor(selectedColor, for: .normal)
+        self.button2.setTitleColor(selectedColor, for: .normal)
+        self.button3.setTitleColor(selectedColor, for: .normal)
+        self.button4.setTitleColor(selectedColor, for: .normal)
         
         var deckNum = 0
         var answerNum = 1
@@ -121,6 +126,23 @@ class QuestionViewController: UIViewController {
             button2.setTitle(shuffledDeck[2][deckNum], for: UIControlState.normal)
             button3.setTitle(shuffledDeck[3][deckNum], for: UIControlState.normal)
             button4.setTitle(shuffledDeck[4][deckNum], for: UIControlState.normal)
+            
+            //MARK: MYSTERY
+            if(mode == "mystery"){
+                delayWithSeconds(1.3){
+                    //Fade out
+                    UIView.animate(withDuration: 0.8, animations: {
+                        self.button1.setTitleColor(.white, for: .normal)
+                        self.button2.setTitleColor(.white, for: .normal)
+                        self.button3.setTitleColor(.white, for: .normal)
+                        self.button4.setTitleColor(.white, for: .normal)
+                        }, completion: nil)
+                }
+            }
+            
+            //For mystery mode, the answers disappear or the question disappears after 1 sec
+            
+            
             questionLabel.text = shuffledDeck[correctAnswer][answerNum]
             
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(QuestionViewController.setTimerLabel), userInfo: nil, repeats: true)
@@ -128,7 +150,7 @@ class QuestionViewController: UIViewController {
     }
     
     func checkIfFinished() -> Bool{
-        if numAnswered == (deck.count) {
+        if mode != "suddenDeath" && numAnswered == (deck.count) {
             
             timer.invalidate()
             print(Double(numCorrect/numAnswered))
@@ -145,29 +167,48 @@ class QuestionViewController: UIViewController {
                 //Message about trying harder
                 message = "You have answered \(numCorrect) out of \(numAnswered) questions correct. I think you could use more practice."
             }
+            gameOver(message: message)
             
-            print("You got this many right: \(numCorrect)\n")
-            print("And you answered this many: \(numAnswered)\n")
-            
-            //Send info back
-            sendBack?.setSentData(highScore: highScore)
-            
-            //Reset stats
-            numAnswered = 0
-            numCorrect = 0
-            
-            
-            //TO DO: Possible transition to view with stats/words missed
-            let ac = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "Back", style: .default, handler: backToMenu))
-            ac.addAction(UIAlertAction(title: "Again", style: .default, handler: askQuestion))
-            
-            present(ac, animated: true)
             return true
         }
+        //In the case of marathon mode
         return false
     }
     
+    @IBAction func answerTapped(_ sender: UIButton) {
+        //Change color of correct button
+        let correctButton: UIButton = self.view.viewWithTag(correctAnswer) as! UIButton
+        
+        if sender == correctButton{
+            buttonFlash(sender: sender, color: UIColor.customLightBlue)
+            
+        }else{
+            buttonFlash(sender: sender, color: UIColor.customLightRed)
+            buttonFlash(sender: correctButton, color: UIColor.customLightBlue)
+            if(mode == "marathon"){
+                gameOver(message: "You went for \(numAnswered) questions!")
+                timer.invalidate()
+                return //TO DO: Revisit effects
+            }
+        }
+        
+        resetTimerLabel()
+
+        //If the title on the button tapped is the same as the correctAnswer
+        if sender.tag == correctAnswer {
+            numCorrect += 1
+        }
+        
+        numAnswered += 1
+        
+        //wait a moment before asking again
+        delayWithSeconds(1){
+            self.askQuestion()
+        }
+        
+    }
+    
+    //MARK: TIMER
     func setTimerLabel()
     {
         let currWidth = timerLabel.frame.width
@@ -175,6 +216,10 @@ class QuestionViewController: UIViewController {
         //If you ran out of time
         if currWidth <= 0
         {
+            if(mode == "suddenDeath"){
+                gameOver(message: "Too slow! You got \(numAnswered) right.")
+            }
+            
             numAnswered += 1
             //Alert the correct answer
             let correctButton: UIButton = self.view.viewWithTag(correctAnswer) as! UIButton
@@ -200,7 +245,7 @@ class QuestionViewController: UIViewController {
             self.timerLabel.frame = CGRect(x: originXbutton, y: originYbutton, width: newWidth, height: oldHeight)
             //self.updateWidthConstraint(num: newWidth)
             //self.timerWidthConstraint.constant = newWidth
-        }, completion: nil)
+            }, completion: nil)
         
         //updateWidthConstraint(num: newWidth)
         count += 1
@@ -223,41 +268,30 @@ class QuestionViewController: UIViewController {
         count = 0
         //updateWidthConstraint(num: newWidth)
     }
-
+    
+    func gameOver(message: String){
+        print("You got this many right: \(numCorrect)\n")
+        print("And you answered this many: \(numAnswered)\n")
+        
+        //Send info back
+        sendBack?.setSentData(highScore: highScore)
+        
+        //Reset stats
+        numAnswered = 0
+        numCorrect = 0
+        
+        //TO DO: Possible transition to view with stats/words missed
+        let ac = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Back", style: .default, handler: backToMenu))
+        ac.addAction(UIAlertAction(title: "Again", style: .default, handler: askQuestion))
+        
+        present(ac, animated: true)
+    }
     
     func backToMenu(action: UIAlertAction! = nil) {
         //Send info back
         sendBack?.setSentData(highScore: highScore)
         navigationController!.pushViewController(storyboard!.instantiateViewController(withIdentifier: "Menu") as UIViewController, animated: true)
-
-    }
-    
-    @IBAction func answerTapped(_ sender: UIButton) {
-        //Change color of correct button
-        let correctButton: UIButton = self.view.viewWithTag(correctAnswer) as! UIButton
-        
-        if sender == correctButton{
-            buttonFlash(sender: sender, color: UIColor.customLightBlue)
-            
-        }else{
-            buttonFlash(sender: sender, color: UIColor.customLightRed)
-            
-            buttonFlash(sender: correctButton, color: UIColor.customLightBlue)
-        }
-        
-        resetTimerLabel()
-
-        //If the title on the button tapped is the same as the correctAnswer
-        if sender.tag == correctAnswer {
-            numCorrect += 1
-        }
-        
-        numAnswered += 1
-        
-        //wait a moment before asking again
-        delayWithSeconds(1){
-            self.askQuestion()
-        }
         
     }
     
