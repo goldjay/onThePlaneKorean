@@ -1,0 +1,3 @@
+Vowels
+Each character combination must begin with a consonant so if you want to use a vowel first, place a ㅇ character first
+logo

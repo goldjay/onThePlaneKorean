@@ -470,6 +470,9 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="lessonImage" destination="R6f-vn-gYf" id="nrj-hU-JB5"/>
+                        <outlet property="lessonText" destination="Pp6-Tn-Bpj" id="uM5-hz-eTP"/>
+                        <outlet property="lessonTitle" destination="RAv-Mm-HGk" id="DE7-Q0-U65"/>
                         <outlet property="tableView" destination="uZ5-af-ZjZ" id="AKe-ZY-ld0"/>
                     </connections>
                 </viewController>
@@ -727,13 +730,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SPEED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oic-PY-NJu">
-                                <frame key="frameInset" minX="136" minY="165" width="103" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MODE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMS-K1-rri">
                                 <frame key="frameInset" minX="136" minY="295" width="103" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -741,8 +737,58 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61R-tU-7rk">
+                                <frame key="frameInset" minX="40" minY="343" width="295" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="normal">
+                                    <color key="titleColor" red="0.5450980392" green="0.83921568629999999" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeMode:" destination="lrf-iC-3hx" eventType="touchUpInside" id="Ayp-bs-2Oy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6Z-Z0-rdl">
+                                <frame key="frameInset" minX="40" minY="509" width="295" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="mystery">
+                                    <color key="titleColor" red="0.5450980392" green="0.83921568629999999" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeMode:" destination="lrf-iC-3hx" eventType="touchUpInside" id="8BX-sj-9pi"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Footer Logo" translatesAutoresizingMaskIntoConstraints="NO" id="QAE-da-FRT">
+                                <frame key="frameInset" minX="19" minY="612" width="343" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jf9-GP-dSp">
+                                <frame key="frameInset" minX="40" minY="426" width="295" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="sudden death">
+                                    <color key="titleColor" red="0.5450980392" green="0.83921568629999999" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeMode:" destination="lrf-iC-3hx" eventType="touchUpInside" id="D7l-V7-e8M"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SPEED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oic-PY-NJu">
+                                <frame key="frameInset" minX="136" minY="116" width="103" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdP-Ry-wxJ">
-                                <frame key="frameInset" minX="92" minY="215" width="60" height="50"/>
+                                <frame key="frameInset" minX="40" minY="163" width="80" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -755,7 +801,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWp-dE-nKP">
-                                <frame key="frameInset" minX="160" minY="215" width="60" height="50"/>
+                                <frame key="frameInset" minX="147" minY="163" width="80" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
@@ -763,9 +809,12 @@
                                 <state key="normal" title="2">
                                     <color key="titleColor" red="0.5450980392" green="0.83921568629999999" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeSpeed:" destination="lrf-iC-3hx" eventType="touchUpInside" id="4Bk-DM-wcv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uo-xq-WTo">
-                                <frame key="frameInset" minX="228" minY="215" width="60" height="50"/>
+                                <frame key="frameInset" minX="255" minY="163" width="80" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
@@ -773,61 +822,25 @@
                                 <state key="normal" title="3">
                                     <color key="titleColor" red="0.5450980392" green="0.83921568629999999" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61R-tU-7rk">
-                                <frame key="frameInset" minX="92" minY="345" width="60" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="normal">
-                                    <color key="titleColor" red="0.5450980392" green="0.83921568629999999" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
                                 <connections>
-                                    <action selector="changeMode:" destination="lrf-iC-3hx" eventType="touchUpInside" id="nhd-Vy-IqA"/>
+                                    <action selector="changeSpeed:" destination="lrf-iC-3hx" eventType="touchUpInside" id="ccE-Lc-yCM"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6Z-Z0-rdl">
-                                <frame key="frameInset" minX="228" minY="345" width="60" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="mystery">
-                                    <color key="titleColor" red="0.5450980392" green="0.83921568629999999" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyA-HE-5MO">
-                                <frame key="frameInset" minX="157" minY="528" width="66" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="START">
-                                    <color key="titleColor" red="0.5450980392" green="0.83921568629999999" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Footer Logo" translatesAutoresizingMaskIntoConstraints="NO" id="QAE-da-FRT">
-                                <frame key="frameInset" minX="19" minY="612" width="343" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jf9-GP-dSp">
-                                <frame key="frameInset" minX="160" minY="345" width="60" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="death">
-                                    <color key="titleColor" red="0.5450980392" green="0.83921568629999999" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.5450980392" green="0.83921568629999999" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="mode1" destination="61R-tU-7rk" id="UoI-NG-cwB"/>
+                        <outlet property="mode2" destination="Jf9-GP-dSp" id="QAj-fz-rCP"/>
+                        <outlet property="mode3" destination="r6Z-Z0-rdl" id="uq9-Kx-Q3U"/>
+                        <outlet property="speed1" destination="cdP-Ry-wxJ" id="PWd-Nz-ss8"/>
+                        <outlet property="speed2" destination="wWp-dE-nKP" id="eZB-H2-2He"/>
+                        <outlet property="speed3" destination="6uo-xq-WTo" id="lu4-Mh-egd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kod-0O-3Rh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="972" y="778"/>
+            <point key="canvasLocation" x="972" y="777.66116941529242"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C76-lA-WHF">

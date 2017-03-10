@@ -12,15 +12,24 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var datasource = [LeftRightTableViewCellContent]()
     
     @IBOutlet var tableView: UITableView!
-
+    @IBOutlet weak var lessonText: UILabel!
+    @IBOutlet weak var lessonImage: UIImageView!
+    @IBOutlet weak var lessonTitle: UILabel!
     
     var num: Int = 0
     var deck: [[String]] = []
+    var lessonDeck: [String] = []
     
     var count:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Set the 
+        
+        lessonTitle.text = lessonDeck[0]
+        lessonText.text = lessonDeck[1]
+        //lessonImage //TO DO: SET THE IMAGE
         
         tableView.delegate = self
         tableView.dataSource = self

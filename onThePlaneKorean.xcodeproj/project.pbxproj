@@ -14,6 +14,10 @@
 		591F98D91E52758E00B5F7D1 /* commonWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = 591F98D81E52758E00B5F7D1 /* commonWords.txt */; };
 		591F98E51E52E33600B5F7D1 /* ExpandingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591F98E41E52E33600B5F7D1 /* ExpandingTableViewController.swift */; };
 		591F98E71E52E86400B5F7D1 /* ExpandingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591F98E61E52E86400B5F7D1 /* ExpandingTableViewCell.swift */; };
+		593A2DF21E727B6000E9B0E0 /* lesson1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 593A2DF11E727B6000E9B0E0 /* lesson1.txt */; };
+		593A2DF61E727BB300E9B0E0 /* lesson2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 593A2DF31E727BB300E9B0E0 /* lesson2.txt */; };
+		593A2DF71E727BB300E9B0E0 /* lesson3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 593A2DF41E727BB300E9B0E0 /* lesson3.txt */; };
+		593A2DF81E727BB300E9B0E0 /* lesson4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 593A2DF51E727BB300E9B0E0 /* lesson4.txt */; };
 		5941DB501E460B190065EDCD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941DB4F1E460B190065EDCD /* MenuViewController.swift */; };
 		5947BB7C1E3EC2FB00E55AC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5947BB7B1E3EC2FB00E55AC9 /* AppDelegate.swift */; };
 		5947BB811E3EC2FB00E55AC9 /* onThePlaneKorean.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5947BB7F1E3EC2FB00E55AC9 /* onThePlaneKorean.storyboard */; };
@@ -38,6 +42,10 @@
 		591F98D81E52758E00B5F7D1 /* commonWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = commonWords.txt; sourceTree = "<group>"; };
 		591F98E41E52E33600B5F7D1 /* ExpandingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandingTableViewController.swift; sourceTree = "<group>"; };
 		591F98E61E52E86400B5F7D1 /* ExpandingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandingTableViewCell.swift; sourceTree = "<group>"; };
+		593A2DF11E727B6000E9B0E0 /* lesson1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lesson1.txt; sourceTree = "<group>"; };
+		593A2DF31E727BB300E9B0E0 /* lesson2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lesson2.txt; sourceTree = "<group>"; };
+		593A2DF41E727BB300E9B0E0 /* lesson3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lesson3.txt; sourceTree = "<group>"; };
+		593A2DF51E727BB300E9B0E0 /* lesson4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lesson4.txt; sourceTree = "<group>"; };
 		5941DB4F1E460B190065EDCD /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		5947BB781E3EC2FB00E55AC9 /* onThePlaneKorean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onThePlaneKorean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5947BB7B1E3EC2FB00E55AC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +75,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		593A2DF01E727AF900E9B0E0 /* lessons */ = {
+			isa = PBXGroup;
+			children = (
+				593A2DF11E727B6000E9B0E0 /* lesson1.txt */,
+				593A2DF31E727BB300E9B0E0 /* lesson2.txt */,
+				593A2DF41E727BB300E9B0E0 /* lesson3.txt */,
+				593A2DF51E727BB300E9B0E0 /* lesson4.txt */,
+			);
+			name = lessons;
+			sourceTree = "<group>";
+		};
 		5947BB6F1E3EC2FB00E55AC9 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +119,7 @@
 				59F684BC1E53269400F1FA2C /* customColors.swift */,
 				5947BB851E3EC2FB00E55AC9 /* Assets.xcassets */,
 				5947BB871E3EC2FB00E55AC9 /* LaunchScreen.storyboard */,
+				593A2DF01E727AF900E9B0E0 /* lessons */,
 				5947BB981E3EDB0500E55AC9 /* levels */,
 				5947BB8A1E3EC2FB00E55AC9 /* Info.plist */,
 				5947BB821E3EC2FB00E55AC9 /* onThePlaneKorean.xcdatamodeld */,
@@ -183,11 +203,15 @@
 				5947BB9E1E3EDB3F00E55AC9 /* level2.txt in Resources */,
 				5947BB9F1E3EDB3F00E55AC9 /* level3.txt in Resources */,
 				5947BB891E3EC2FB00E55AC9 /* LaunchScreen.storyboard in Resources */,
+				593A2DF61E727BB300E9B0E0 /* lesson2.txt in Resources */,
+				593A2DF71E727BB300E9B0E0 /* lesson3.txt in Resources */,
 				5947BB9D1E3EDB3F00E55AC9 /* level1.txt in Resources */,
+				593A2DF21E727B6000E9B0E0 /* lesson1.txt in Resources */,
 				5947BB861E3EC2FB00E55AC9 /* Assets.xcassets in Resources */,
 				59D501FA1E57C7A500355D35 /* level5.txt in Resources */,
 				591F98D91E52758E00B5F7D1 /* commonWords.txt in Resources */,
 				5947BB811E3EC2FB00E55AC9 /* onThePlaneKorean.storyboard in Resources */,
+				593A2DF81E727BB300E9B0E0 /* lesson4.txt in Resources */,
 				5947BBA01E3EDB3F00E55AC9 /* level4.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

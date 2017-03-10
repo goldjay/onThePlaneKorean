@@ -13,4 +13,4 @@ var speed: CGFloat = 30 //Set the game speed
 
 //sudden death, mystery (answers disappear after flashing),
 
-var mode: String = "mystery" //Set the mode for time attack or marathon
+var mode: String = "normal" //Set the mode for time attack or marathon

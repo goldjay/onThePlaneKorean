@@ -29,6 +29,7 @@ class MenuViewController: UIViewController, sendBack {
     
     
     var currentDeck: [[String]] = []
+    var lessonDeck: [String] = []
     var num = 0
     
     //Load info from Core Data
@@ -204,6 +205,17 @@ class MenuViewController: UIViewController, sendBack {
         
         num = sender.tag
         
+        if let lessonFilePath = Bundle.main.path(forResource: "lesson\(num)", ofType: "txt"){
+            if let lessonContents = try? String(contentsOfFile: lessonFilePath) {
+                let lines = lessonContents.components(separatedBy: CharacterSet.newlines).filter{ !$0.isEmpty}
+                
+                for line in lines {
+                    //append to an array for lesson
+                    lessonDeck.append(line)
+                }
+            }
+        }
+        
         if let levelFilePath = Bundle.main.path(forResource: "level\(num)", ofType: "txt") {
             
             if let levelContents = try? String(contentsOfFile: levelFilePath) {
@@ -226,6 +238,7 @@ class MenuViewController: UIViewController, sendBack {
                 
                 vc.deck = currentDeck
                 vc.num = num
+                vc.lessonDeck = lessonDeck
                 //vc.sendBack = self
                 
                 navigationController?.pushViewController(vc, animated: true)
