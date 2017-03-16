@@ -26,6 +26,14 @@ class OptionsViewController: UIViewController {
         speedArr = [speed1, speed2, speed3]
         modeArr = [mode1, mode2, mode3]
         
+        for btn in speedArr {
+            styleButton(btn: btn)
+        }
+        
+        for btn in modeArr {
+            styleButton(btn: btn)
+        }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -71,7 +79,7 @@ class OptionsViewController: UIViewController {
         
         for m in modeArr {
             if(m == sender){
-                m.backgroundColor = UIColor.customGreen
+                m.backgroundColor = UIColor.customGreen //TO DO: CHANGE HIGHLIGHT COLOR
             }else{
                 m.backgroundColor = UIColor.white
             }
@@ -80,6 +88,13 @@ class OptionsViewController: UIViewController {
     }
     //If the text of the button doesn't match the mode, unhighlight it
     
+    func styleButton(btn: UIButton){
+        
+        btn.layer.cornerRadius = 5
+        btn.layer.borderWidth = 2
+        btn.layer.borderColor = UIColor.white.cgColor
+
+    }
     
     
 }

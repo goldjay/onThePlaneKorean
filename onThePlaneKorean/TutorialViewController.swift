@@ -14,8 +14,8 @@ class TutorialViewController: UIViewController {
     @IBOutlet weak var romanizationLabel: UILabel!
     @IBOutlet weak var soundLabel: UILabel!
     
-    var num: Int = 0
-    var deck: [[String]] = []
+    //var num: Int = 0
+    //var deck: [[String]] = []
     
     var pos = 0
 
@@ -53,11 +53,11 @@ class TutorialViewController: UIViewController {
     
     @IBAction func swipeLeft(_ sender: AnyObject) {
         //Check if we are out of bounds
-        if(pos + 1 == deck.count){
+        if(pos + 1 == currentDeck.count){
             //Go to the quiz
             if let vc = storyboard?.instantiateViewController(withIdentifier: "Question") as? QuestionViewController {
-                vc.num = num
-                vc.deck = deck
+                //vc.num = num
+                //vc.deck = deck
                 navigationController?.pushViewController(vc, animated: true)
             }
         }else{
@@ -68,9 +68,9 @@ class TutorialViewController: UIViewController {
     
     //Sets initial data for tutorial
     func presentData() {
-        letterLabel.text = deck[pos][0]
-        romanizationLabel.text = deck[pos][1]
-        soundLabel.text = deck[pos][2]
+        letterLabel.text = currentDeck[pos][0]
+        romanizationLabel.text = currentDeck[pos][1]
+        soundLabel.text = currentDeck[pos][2]
     }
 
 }

@@ -29,8 +29,8 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var timerWidthConstraint: NSLayoutConstraint! //TO DO: FIX CONSTRAINTS
     
     //From menu view
-    var num: Int = 0
-    var deck: [[String]] = []
+    //var num: Int = 0
+    //var deck: [[String]] = []
     var sendBack: sendBack?
     
     //Data from the quiz
@@ -107,7 +107,7 @@ class QuestionViewController: UIViewController {
         var answerNum = 1
         
         if(!checkIfFinished()){
-            let shuffledDeck = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: deck) as! [[String]]
+            let shuffledDeck = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: currentDeck) as! [[String]]
             
             //Choose a random answer
             correctAnswer = Int(arc4random_uniform(4) + 1)
@@ -150,10 +150,10 @@ class QuestionViewController: UIViewController {
     }
     
     func checkIfFinished() -> Bool{
-        if mode != "suddenDeath" && numAnswered == (deck.count) {
+        if mode != "suddenDeath" && numAnswered == (currentDeck.count) {
             
             timer.invalidate()
-            print(Double(numCorrect/numAnswered))
+            //print(Double(numCorrect/numAnswered))
             
             //If you did well enough, you can move to the next level
             if Double(numCorrect) / Double(numAnswered) >= 0.9 {

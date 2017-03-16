@@ -28,9 +28,9 @@ class MenuViewController: UIViewController, sendBack {
     @IBOutlet weak var level5ButtonWidth: NSLayoutConstraint!
     
     
-    var currentDeck: [[String]] = []
-    var lessonDeck: [String] = []
-    var num = 0
+    //var currentDeck: [[String]] = []
+    //var lessonDeck: [String] = []
+    //var num = 0
     
     //Load info from Core Data
     //var savedDecks = [deckData]()
@@ -205,6 +205,7 @@ class MenuViewController: UIViewController, sendBack {
         
         num = sender.tag
         
+        //Get lesson deck
         if let lessonFilePath = Bundle.main.path(forResource: "lesson\(num)", ofType: "txt"){
             if let lessonContents = try? String(contentsOfFile: lessonFilePath) {
                 let lines = lessonContents.components(separatedBy: CharacterSet.newlines).filter{ !$0.isEmpty}
@@ -236,9 +237,9 @@ class MenuViewController: UIViewController, sendBack {
             
             if let vc = storyboard?.instantiateViewController(withIdentifier: "Lesson") as? LessonViewController {
                 
-                vc.deck = currentDeck
-                vc.num = num
-                vc.lessonDeck = lessonDeck
+                //vc.deck = currentDeck
+                //vc.num = num
+                //vc.lessonDeck = lessonDeck
                 //vc.sendBack = self
                 
                 navigationController?.pushViewController(vc, animated: true)
@@ -270,8 +271,8 @@ class MenuViewController: UIViewController, sendBack {
             
             if let vc = storyboard?.instantiateViewController(withIdentifier: "Question") as? QuestionViewController {
                 
-                vc.deck = currentDeck
-                vc.num = num
+                //vc.deck = currentDeck
+                //vc.num = num
                 vc.sendBack = self
                 
                 navigationController?.pushViewController(vc, animated: true)
