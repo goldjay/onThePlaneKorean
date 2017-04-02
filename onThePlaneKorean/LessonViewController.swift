@@ -14,30 +14,20 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var lessonTitle: UILabel!
     
-    @IBOutlet weak var skipButton: UIButton!
-    //var num: Int = 0
-    //var deck: [[String]] = []
-    //var lessonDeck: [String] = []
-    
-    //var count:Int = 0
-    //var currentLesson = 0
-    
-    
+    @IBOutlet weak var topLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lessonTitle.text = lessonDeck[0]
+        lessonTitle.text = lessonDeck[1]
+        
+        // Set top label here
+        topLabel.text = lessonDeck[0]
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        skipButton.backgroundColor = .clear
-        skipButton.layer.cornerRadius = 5
-        skipButton.layer.borderWidth = 2
-        skipButton.layer.borderColor = UIColor.white.cgColor
-        
-        
+                
         //Load deck into format for custom cells
         for x in 0..<currentDeck.count {
             datasource.append(LeftRightTableViewCellContent(left: currentDeck[x][2], right: currentDeck[x][0]))
@@ -56,26 +46,13 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
-    /*
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //on selection
-    }
-    */
-    
     @IBAction func swipeRight(_ sender: AnyObject) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Explanation") as? ExplanationController {
             navigationController?.pushViewController(vc, animated: true)
         }
 
     }
-    @IBAction func skipToQuiz(_ sender: AnyObject) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "Question") as? QuestionViewController {
-            //vc.num = num
-            //vc.deck = deck
-            navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
+
 }
 
     

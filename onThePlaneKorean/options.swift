@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-var speed: CGFloat = 30 //Set the game speed
+var speed: CGFloat = 40 //Set the game speed
 
 //sudden death, mystery (answers disappear after flashing),
 

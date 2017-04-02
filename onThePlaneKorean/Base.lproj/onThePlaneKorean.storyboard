@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="onThePlaneKorean" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -295,7 +295,7 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Footer Logo" translatesAutoresizingMaskIntoConstraints="NO" id="NlW-e1-dTt"/>
                         </subviews>
-                        <color key="backgroundColor" red="0.5450980392" green="0.83921568629999999" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.56194700900000005" green="0.81023697439999998" blue="0.7798116075" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="eNK-hp-vEm" firstAttribute="top" secondItem="yGU-pp-lTJ" secondAttribute="bottom" constant="15" id="5j1-56-vB6"/>
                             <constraint firstItem="LGJ-Td-hQg" firstAttribute="top" secondItem="IId-0F-Ncv" secondAttribute="bottom" constant="8" id="8Gb-Yn-hin"/>
@@ -316,6 +316,8 @@
                             <constraint firstItem="jm7-hd-u9N" firstAttribute="leading" secondItem="D8k-3u-xLW" secondAttribute="leadingMargin" id="zp9-7b-ttI"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="level1" destination="LGJ-Td-hQg" id="Pp2-7h-3gY"/>
                         <outlet property="level1ButtonWidth" destination="LtZ-E8-iYf" id="5Tc-g9-EW9"/>
@@ -349,7 +351,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ESa-tY-DxZ" id="H5q-QA-pNy">
-                                    <frame key="frameInset" width="375" height="78"/>
+                                    <frame key="frameInset" width="375" height="78.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6l-FP-2Jq">
@@ -450,17 +452,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rcy-OE-zeY">
-                                <frame key="frameInset" minX="17" minY="537" width="343" height="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gj1-ew-tQ5">
+                                <frame key="frameInset" minX="16" minY="88" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <state key="normal" title="SKIP">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="skipToQuiz:" destination="VPR-6p-JFi" eventType="touchUpInside" id="pKC-Ap-Wwc"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.5450980392" green="0.83921568629999999" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -470,8 +468,8 @@
                     </view>
                     <connections>
                         <outlet property="lessonTitle" destination="RAv-Mm-HGk" id="DE7-Q0-U65"/>
-                        <outlet property="skipButton" destination="Rcy-OE-zeY" id="Gcr-4a-2Gk"/>
                         <outlet property="tableView" destination="uZ5-af-ZjZ" id="AKe-ZY-ld0"/>
+                        <outlet property="topLabel" destination="gj1-ew-tQ5" id="P7h-Dn-o9r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K89-GC-sHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -811,7 +809,7 @@
         <!--Options View Controller-->
         <scene sceneID="VCl-Md-6Ga">
             <objects>
-                <viewController id="lrf-iC-3hx" customClass="OptionsViewController" customModule="onThePlaneKorean" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Options" id="lrf-iC-3hx" customClass="OptionsViewController" customModule="onThePlaneKorean" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="N9e-Ff-1k4"/>
                         <viewControllerLayoutGuide type="bottom" id="0SE-nC-RaO"/>
@@ -832,7 +830,6 @@
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61R-tU-7rk">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="295" id="6aF-Dv-Vmz"/>
                                     <constraint firstAttribute="height" constant="75" id="sOQ-FX-aGA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
@@ -848,7 +845,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="LAh-iY-Q07"/>
-                                    <constraint firstAttribute="width" constant="295" id="QPq-r6-1GG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -862,7 +858,6 @@
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jf9-GP-dSp">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="295" id="2lY-V0-s8F"/>
                                     <constraint firstAttribute="height" constant="75" id="5bk-EC-Xsi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
@@ -891,7 +886,7 @@
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NFU-u8-9cy">
                                 <subviews>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdP-Ry-wxJ">
+                                    <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdP-Ry-wxJ">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="93" id="cdY-bP-uVi"/>
@@ -906,7 +901,7 @@
                                             <action selector="changeSpeed:" destination="lrf-iC-3hx" eventType="touchUpInside" id="exy-Yz-F38"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWp-dE-nKP">
+                                    <button opaque="NO" tag="50" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWp-dE-nKP">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="BxA-ip-aWQ"/>
@@ -921,7 +916,7 @@
                                             <action selector="changeSpeed:" destination="lrf-iC-3hx" eventType="touchUpInside" id="4Bk-DM-wcv"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uo-xq-WTo">
+                                    <button opaque="NO" tag="60" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uo-xq-WTo">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="BTZ-y9-H9h"/>
@@ -981,7 +976,7 @@
         <!--Navigation Controller-->
         <scene sceneID="C76-lA-WHF">
             <objects>
-                <navigationController id="KXi-ec-WpQ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KXi-ec-WpQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>

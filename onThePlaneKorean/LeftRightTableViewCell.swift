@@ -24,7 +24,6 @@ class LeftRightTableViewCell: UITableViewCell {
         
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
         
     func setLR(content: LeftRightTableViewCellContent){

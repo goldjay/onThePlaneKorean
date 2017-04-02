@@ -26,11 +26,6 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var quizNumLabel: UILabel!
     
-    @IBOutlet weak var timerWidthConstraint: NSLayoutConstraint! //TO DO: FIX CONSTRAINTS
-    
-    //From menu view
-    //var num: Int = 0
-    //var deck: [[String]] = []
     var sendBack: sendBack?
     
     //Data from the quiz
@@ -129,7 +124,7 @@ class QuestionViewController: UIViewController {
             
             //MARK: MYSTERY
             if(mode == "mystery"){
-                delayWithSeconds(1.3){
+                delayWithSeconds(1){
                     //Fade out
                     UIView.animate(withDuration: 0.8, animations: {
                         self.button1.setTitleColor(.white, for: .normal)
@@ -293,11 +288,6 @@ class QuestionViewController: UIViewController {
         sendBack?.setSentData(highScore: highScore)
         navigationController!.pushViewController(storyboard!.instantiateViewController(withIdentifier: "Menu") as UIViewController, animated: true)
         
-    }
-    
-    func updateWidthConstraint(num: CGFloat) {
-        timerWidthConstraint.constant = num
-        self.view.layoutIfNeeded() //Update constraints
     }
     
     func buttonFlash(sender: UIButton, color: UIColor){

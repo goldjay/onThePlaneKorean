@@ -27,15 +27,8 @@ class MenuViewController: UIViewController, sendBack {
     
     @IBOutlet weak var level5ButtonWidth: NSLayoutConstraint!
     
-    
-    //var currentDeck: [[String]] = []
-    //var lessonDeck: [String] = []
-    //var num = 0
-    
-    //Load info from Core Data
-    //var savedDecks = [deckData]()
-    
     var decks = [NSManagedObject?]()
+    
     
     func addTopBorder(btn: UIButton, color: UIColor){
         let lineView = UIView(frame: CGRect(x: 0,y: 0,width: 343,height: 5)) //Magic number FIX
@@ -45,6 +38,28 @@ class MenuViewController: UIViewController, sendBack {
     
     //Get data from Coredata
     override func viewWillAppear(_ animated: Bool) {
+        
+        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "\u{2699}" , style: .plain, target: self, action: #selector(toMenu))
+
+        
+        let button = UIButton.init(type: .custom)
+        //set image for button
+        button.setImage(UIImage(named: "gear.png"), for: UIControlState.normal)
+        //add function for button
+        button.addTarget(self, action: #selector(toMenu), for: UIControlEvents.touchUpInside)
+        //set frame
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        
+        let barButton = UIBarButtonItem(customView: button)
+        //assign button to navigationbar
+        self.navigationItem.rightBarButtonItem = barButton
+        
+        
+        
+        
+        
+        
+
       
         addTopBorder(btn: level1, color: UIColor.customYellow)
         addTopBorder(btn: level2, color: UIColor.customRed)
@@ -237,11 +252,6 @@ class MenuViewController: UIViewController, sendBack {
             
             if let vc = storyboard?.instantiateViewController(withIdentifier: "Lesson") as? LessonViewController {
                 
-                //vc.deck = currentDeck
-                //vc.num = num
-                //vc.lessonDeck = lessonDeck
-                //vc.sendBack = self
-                
                 navigationController?.pushViewController(vc, animated: true)
             }
  
@@ -270,9 +280,7 @@ class MenuViewController: UIViewController, sendBack {
             }
             
             if let vc = storyboard?.instantiateViewController(withIdentifier: "Question") as? QuestionViewController {
-                
-                //vc.deck = currentDeck
-                //vc.num = num
+        
                 vc.sendBack = self
                 
                 navigationController?.pushViewController(vc, animated: true)
@@ -299,8 +307,6 @@ class MenuViewController: UIViewController, sendBack {
                 }
             }
             
-            //print(currentDeck)
-            
             if let vc = storyboard?.instantiateViewController(withIdentifier: "ExpandingViewController") as? ExpandingTableViewController {
                 
                 vc.deck = currentDeck
@@ -309,6 +315,14 @@ class MenuViewController: UIViewController, sendBack {
             }
         }
         
+    }
+    
+    func toMenu(){
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Options") as? OptionsViewController {
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
+
     }
     
     //DEBUG FOR DELETE CORE DATA

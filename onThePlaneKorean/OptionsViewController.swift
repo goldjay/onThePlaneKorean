@@ -20,6 +20,8 @@ class OptionsViewController: UIViewController {
     var speedArr: [UIButton] = []
     var modeArr: [UIButton] = []
     
+    // Highlight color for the menus
+    var selectedColor: UIColor = UIColor.white
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,29 +36,18 @@ class OptionsViewController: UIViewController {
             styleButton(btn: btn)
         }
         
-        // Do any additional setup after loading the view.
+        //Set the selected mode and speed
+        
     }
 
     @IBAction func changeSpeed(_ sender: UIButton) {
-        switch(sender.tag){
-        case 1:
-            speed = 20
-            break
-        case 2:
-            speed = 30
-            break
-        case 3:
-            speed = 40
-            break
-        default:
-            return
-        }
+        speed = CGFloat(sender.tag)
         
         for m in speedArr {
             if(m == sender){
-                m.backgroundColor = UIColor.customGreen
+                m.alpha = 1
             }else{
-                m.backgroundColor = UIColor.white
+                m.alpha = 0.5
             }
         }
     }
@@ -78,21 +69,25 @@ class OptionsViewController: UIViewController {
             print("Mode is: \(mode)")
         
         for m in modeArr {
+            m.backgroundColor = UIColor.white
+            m.setTitleColor(UIColor .customLightBlue, for: UIControlState.normal)
+            
             if(m == sender){
-                m.backgroundColor = UIColor.customGreen //TO DO: CHANGE HIGHLIGHT COLOR
+                m.alpha = 1
             }else{
-                m.backgroundColor = UIColor.white
+                m.alpha = 0.5
             }
         }
         
     }
     //If the text of the button doesn't match the mode, unhighlight it
-    
     func styleButton(btn: UIButton){
-        
         btn.layer.cornerRadius = 5
-        btn.layer.borderWidth = 2
-        btn.layer.borderColor = UIColor.white.cgColor
+        
+        
+        if(CGFloat(btn.tag) != speed && btn.titleLabel?.text != mode ){
+            btn.alpha = 0.5
+        }
 
     }
     

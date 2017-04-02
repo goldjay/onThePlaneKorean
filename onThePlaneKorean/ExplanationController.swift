@@ -32,8 +32,6 @@ class ExplanationController: UIViewController {
     }
     
     @IBAction func swipeLeft(_ sender: AnyObject) {
-        print("SWIPED LEFT")
-        print(currentLesson)
         
         if(currentLesson + 3 < lessonDeck.count - 1){
             currentLesson += 3
@@ -51,11 +49,11 @@ class ExplanationController: UIViewController {
     
     func loadContent(){
         //Assign labels
-        blurb1.text = lessonDeck[currentLesson]
-        blurb2.text = lessonDeck[currentLesson + 1]
+        blurb1.text = lessonDeck[currentLesson + 1]
+        blurb2.text = lessonDeck[currentLesson + 2]
         
         //imageView.image = UIImage(named:"foo")
-        explanationImage.image = UIImage(named :lessonDeck[currentLesson + 2])
+        explanationImage.image = UIImage(named :lessonDeck[currentLesson + 3])
     }
  
 
