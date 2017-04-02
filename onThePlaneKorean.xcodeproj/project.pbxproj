@@ -30,6 +30,7 @@
 		5947BBA01E3EDB3F00E55AC9 /* level4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5947BB9C1E3EDB3F00E55AC9 /* level4.txt */; };
 		5947BBB41E3F2A2700E55AC9 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5947BBB31E3F2A2700E55AC9 /* QuestionViewController.swift */; };
 		5959543B1E40BABC004FE725 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5959543A1E40BABC004FE725 /* TutorialViewController.swift */; };
+		59642C9B1E90C0C90016646C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59642C9A1E90C0C90016646C /* AboutViewController.swift */; };
 		59D2300E1E78CE9D007A7920 /* ExplanationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D2300D1E78CE9D007A7920 /* ExplanationController.swift */; };
 		59D501FA1E57C7A500355D35 /* level5.txt in Resources */ = {isa = PBXBuildFile; fileRef = 59D501F91E57C7A500355D35 /* level5.txt */; };
 		59F684BD1E53269400F1FA2C /* customColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F684BC1E53269400F1FA2C /* customColors.swift */; };
@@ -61,6 +62,7 @@
 		5947BB9C1E3EDB3F00E55AC9 /* level4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level4.txt; sourceTree = "<group>"; };
 		5947BBB31E3F2A2700E55AC9 /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		5959543A1E40BABC004FE725 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		59642C9A1E90C0C90016646C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		59D2300D1E78CE9D007A7920 /* ExplanationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplanationController.swift; sourceTree = "<group>"; };
 		59D501F91E57C7A500355D35 /* level5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level5.txt; sourceTree = "<group>"; };
 		59F684BC1E53269400F1FA2C /* customColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customColors.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				5947BBB31E3F2A2700E55AC9 /* QuestionViewController.swift */,
 				5959543A1E40BABC004FE725 /* TutorialViewController.swift */,
 				590A48691E690D610054F1D3 /* LessonViewController.swift */,
+				59642C9A1E90C0C90016646C /* AboutViewController.swift */,
 				59D2300D1E78CE9D007A7920 /* ExplanationController.swift */,
 				591F98E41E52E33600B5F7D1 /* ExpandingTableViewController.swift */,
 				591F98E61E52E86400B5F7D1 /* ExpandingTableViewCell.swift */,
@@ -236,6 +239,7 @@
 				5914C4471E64B6F700A09100 /* options.swift in Sources */,
 				590A486C1E6929160054F1D3 /* LeftRightTableViewCell.swift in Sources */,
 				5959543B1E40BABC004FE725 /* TutorialViewController.swift in Sources */,
+				59642C9B1E90C0C90016646C /* AboutViewController.swift in Sources */,
 				590309A91E6BEE090082B1BB /* OptionsViewController.swift in Sources */,
 				590A486A1E690D610054F1D3 /* LessonViewController.swift in Sources */,
 				5941DB501E460B190065EDCD /* MenuViewController.swift in Sources */,

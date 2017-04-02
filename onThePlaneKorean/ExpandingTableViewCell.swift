@@ -32,6 +32,8 @@ class ExpandingTableViewCell: UITableViewCell {
     func set(content: ExpandingTableViewCellContent){
         self.titleLabel.text = content.title
         self.subtitleLabel.text = content.expanded ? content.subtitle: ""
+        self.titleLabel.textColor = UIColor.white //May be unnecessary
+        self.subtitleLabel.textColor = UIColor.white
     }
     
     

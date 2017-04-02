@@ -13,6 +13,17 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    let userDefaults = UserDefaults.standard
+    var currentTimesOfOpenApp:Int = 0
+    
+    func saveTimesOfOpenApp() -> Void {
+        userDefaults.set(currentTimesOfOpenApp, forKey: "timesOfOpenApp")
+    }
+    
+    func getCurrentTimesOfOpenApp() -> Int {
+        return userDefaults.integer(forKey: "timesOfOpenApp") + 1
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -26,6 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().shadowImage = UIImage()
         
+        // For user Defaults
+        self.currentTimesOfOpenApp = getCurrentTimesOfOpenApp()
+        
+        saveTimesOfOpenApp()
+        print("SAVING THE DATA")
+
         return true
     }
 

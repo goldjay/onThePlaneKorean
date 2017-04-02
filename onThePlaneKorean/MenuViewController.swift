@@ -18,17 +18,12 @@ class MenuViewController: UIViewController, sendBack {
     @IBOutlet weak var phraseBook: UIButton!
     
     @IBOutlet weak var level1ButtonWidth: NSLayoutConstraint! //Set individually?
-    
     @IBOutlet weak var level2ButtonWidth: NSLayoutConstraint!
-    
     @IBOutlet weak var level3ButtonWidth: NSLayoutConstraint!
-    
     @IBOutlet weak var level4ButtonWidth: NSLayoutConstraint!
-    
     @IBOutlet weak var level5ButtonWidth: NSLayoutConstraint!
     
-    var decks = [NSManagedObject?]()
-    
+    var decks = [NSManagedObject?]() // TO DO: Remove
     
     func addTopBorder(btn: UIButton, color: UIColor){
         let lineView = UIView(frame: CGRect(x: 0,y: 0,width: 343,height: 5)) //Magic number FIX
@@ -38,9 +33,6 @@ class MenuViewController: UIViewController, sendBack {
     
     //Get data from Coredata
     override func viewWillAppear(_ animated: Bool) {
-        
-        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "\u{2699}" , style: .plain, target: self, action: #selector(toMenu))
-
         
         let button = UIButton.init(type: .custom)
         //set image for button
@@ -54,13 +46,6 @@ class MenuViewController: UIViewController, sendBack {
         //assign button to navigationbar
         self.navigationItem.rightBarButtonItem = barButton
         
-        
-        
-        
-        
-        
-
-      
         addTopBorder(btn: level1, color: UIColor.customYellow)
         addTopBorder(btn: level2, color: UIColor.customRed)
         addTopBorder(btn: level3, color: UIColor.customBlue)
@@ -88,7 +73,17 @@ class MenuViewController: UIViewController, sendBack {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         
-        print(decks.count)
+        // Save number of times the app has been opened
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        let times = delegate.currentTimesOfOpenApp
+        
+        // If it's the first time opening the app, go to special intro about Hangul
+        if(times <= 1){
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "Explanation") as? ExplanationController {
+                
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
 
     @IBAction func levelSelected(_ sender: UIButton) {

@@ -221,9 +221,14 @@ class QuestionViewController: UIViewController {
             
             buttonFlash(sender: correctButton, color: UIColor.customLightBlue)
             
-            resetTimerLabel()
-            askQuestion()
+            
+            self.resetTimerLabel()
+            delayWithSeconds(0.8){
+            self.askQuestion()
             return
+            }
+            
+            
         }
         
         
@@ -261,7 +266,6 @@ class QuestionViewController: UIViewController {
         
         timer.invalidate()
         count = 0
-        //updateWidthConstraint(num: newWidth)
     }
     
     func gameOver(message: String){
