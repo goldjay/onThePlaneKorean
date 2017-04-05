@@ -34,6 +34,8 @@ class ExpandingTableViewController: UITableViewController {
 
         return datasource.count
     }
+    
+    // Set number of sections and section titles
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

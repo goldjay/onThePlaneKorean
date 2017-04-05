@@ -21,7 +21,7 @@ extension UIColor {
     }
     
     class var customLightRed: UIColor {
-        let lightRed = 0xf29a8d
+        let lightRed = 0xF08080
         return UIColor.rgb(fromHex: lightRed)
     }
     
@@ -31,7 +31,7 @@ extension UIColor {
     }
     
     class var customLightGreen: UIColor {
-        let lightGreen = 0xA5D9AC
+        let lightGreen = 0x93DB70
         return UIColor.rgb(fromHex: lightGreen)
     }
     

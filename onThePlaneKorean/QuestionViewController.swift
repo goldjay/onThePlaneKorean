@@ -47,6 +47,7 @@ class QuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("NOW NUM IS: \(num)")
         
         setButtonAndBackground(num: num)
  
@@ -54,13 +55,15 @@ class QuestionViewController: UIViewController {
         originalWidth = timerLabel.frame.width
         decrementAmt = originalWidth / speed //Global options variable
         
-        quizNumLabel.text = "QUIZ LEVEL \(num)"
+        quizNumLabel.text = "QUIZ LEVEL \(num + 1)"
         askQuestion()
     }
     
     func setButtonAndBackground(num: Int) {
         
         var selectedColor: UIColor
+        
+        print("NOW NUM IS: \(num)")
         
         switch(num){
         case 1:
@@ -93,10 +96,12 @@ class QuestionViewController: UIViewController {
     func askQuestion(action: UIAlertAction! = nil) {
         //TO DO: SIMPLIFY
         let selectedColor = self.view.backgroundColor
-        self.button1.setTitleColor(selectedColor, for: .normal)
-        self.button2.setTitleColor(selectedColor, for: .normal)
-        self.button3.setTitleColor(selectedColor, for: .normal)
-        self.button4.setTitleColor(selectedColor, for: .normal)
+        let buttonArr = [self.button1, self.button2, self.button3, self.button4]
+        
+        
+        for btn in buttonArr {
+            btn?.setTitleColor(selectedColor, for: .normal)
+        }
         
         var deckNum = 0
         var answerNum = 1
@@ -127,11 +132,12 @@ class QuestionViewController: UIViewController {
                 delayWithSeconds(1){
                     //Fade out
                     UIView.animate(withDuration: 0.8, animations: {
-                        self.button1.setTitleColor(.white, for: .normal)
-                        self.button2.setTitleColor(.white, for: .normal)
-                        self.button3.setTitleColor(.white, for: .normal)
-                        self.button4.setTitleColor(.white, for: .normal)
-                        }, completion: nil)
+                        
+                        for btn in buttonArr{
+                            btn?.setTitleColor(.white, for: .normal)
+                        }
+                        
+                    }, completion: nil)
                 }
             }
             
@@ -145,7 +151,7 @@ class QuestionViewController: UIViewController {
     }
     
     func checkIfFinished() -> Bool{
-        if mode != "suddenDeath" && numAnswered == (currentDeck.count) {
+        if mode != "suddenDeath" && numAnswered == (numQuestions) {
             
             timer.invalidate()
             //print(Double(numCorrect/numAnswered))
@@ -175,11 +181,12 @@ class QuestionViewController: UIViewController {
         let correctButton: UIButton = self.view.viewWithTag(correctAnswer) as! UIButton
         
         if sender == correctButton{
-            buttonFlash(sender: sender, color: UIColor.customLightBlue)
+            buttonFlash(sender: sender, color: UIColor.customLightGreen)
+            
             
         }else{
             buttonFlash(sender: sender, color: UIColor.customLightRed)
-            buttonFlash(sender: correctButton, color: UIColor.customLightBlue)
+            buttonFlash(sender: correctButton, color: UIColor.customLightGreen)
             if(mode == "marathon"){
                 gameOver(message: "You went for \(numAnswered) questions!")
                 timer.invalidate()
@@ -219,7 +226,7 @@ class QuestionViewController: UIViewController {
             //Alert the correct answer
             let correctButton: UIButton = self.view.viewWithTag(correctAnswer) as! UIButton
             
-            buttonFlash(sender: correctButton, color: UIColor.customLightBlue)
+            buttonFlash(sender: correctButton, color: UIColor.customLightGreen)
             
             
             self.resetTimerLabel()
@@ -243,11 +250,8 @@ class QuestionViewController: UIViewController {
         UIView.animate(withDuration: 0.01, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
             
             self.timerLabel.frame = CGRect(x: originXbutton, y: originYbutton, width: newWidth, height: oldHeight)
-            //self.updateWidthConstraint(num: newWidth)
-            //self.timerWidthConstraint.constant = newWidth
             }, completion: nil)
         
-        //updateWidthConstraint(num: newWidth)
         count += 1
     }
     
@@ -298,14 +302,20 @@ class QuestionViewController: UIViewController {
         //Fade in
         UIView.animate(withDuration: 0.4, animations: {
             sender.backgroundColor = color
+            sender.setTitleColor(UIColor.white, for: UIControlState.normal)
+            //sender.titleLabel?.text = (sender.titleLabel?.text)! + "wow"
+            
             }, completion: nil)
         //Pause
-        delayWithSeconds(0.5){
+        delayWithSeconds(1){
+            sender.backgroundColor = UIColor.white
+            //sender.alpha = 1
             //Fade out
+            /*
             UIView.animate(withDuration: 0.4, animations: {
-                sender.backgroundColor = UIColor.white
-                sender.alpha = 1
+             
                 }, completion: nil)
+            */
         }
         
         

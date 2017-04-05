@@ -17,22 +17,34 @@ class OptionsViewController: UIViewController {
     @IBOutlet weak var mode2: UIButton!
     @IBOutlet weak var mode3: UIButton!
     
+    @IBOutlet weak var qnum1: UIButton!
+    @IBOutlet weak var qnum2: UIButton!
+    @IBOutlet weak var qnum3: UIButton!
+    
     var speedArr: [UIButton] = []
     var modeArr: [UIButton] = []
+    var qnumArr: [UIButton] = []
     
     // Highlight color for the menus
     var selectedColor: UIColor = UIColor.white
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         speedArr = [speed1, speed2, speed3]
         modeArr = [mode1, mode2, mode3]
+        qnumArr = [qnum1, qnum2, qnum3]
         
         for btn in speedArr {
             styleButton(btn: btn)
         }
         
         for btn in modeArr {
+            styleButton(btn: btn)
+        }
+        
+        for btn in qnumArr {
             styleButton(btn: btn)
         }
         
@@ -80,12 +92,30 @@ class OptionsViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func changeNumberOfQuestions(_ sender: UIButton) {
+        
+        numQuestions = sender.tag
+        
+        // Set unselected to slightly transparent
+        for m in qnumArr {
+            if(m == sender){
+                m.alpha = 1
+            }else{
+                m.alpha = 0.5
+            }
+        }
+        
+    }
+    
     //If the text of the button doesn't match the mode, unhighlight it
     func styleButton(btn: UIButton){
         btn.layer.cornerRadius = 5
         
         
-        if(CGFloat(btn.tag) != speed && btn.titleLabel?.text != mode ){
+        if(CGFloat(btn.tag) == speed || btn.titleLabel?.text == mode || btn.tag == numQuestions){
+            btn.alpha = 1
+        } else {
             btn.alpha = 0.5
         }
 

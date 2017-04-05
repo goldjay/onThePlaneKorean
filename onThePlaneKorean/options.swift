@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-var speed: CGFloat = 40 //Set the game speed
+var speed: CGFloat = 60 //Set the game speed
 
 //sudden death, mystery (answers disappear after flashing),
 
@@ -19,3 +19,4 @@ var currentDeck: [[String]] = []
 var num: Int = 0
 var lessonDeck: [String] = []
 var currentLesson: Int = 1
+var numQuestions: Int = 20
