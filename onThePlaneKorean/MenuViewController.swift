@@ -23,13 +23,14 @@ class MenuViewController: UIViewController, sendBack {
     @IBOutlet weak var level4ButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var level5ButtonWidth: NSLayoutConstraint!
     
-    var decks = [NSManagedObject?]() // TO DO: Remove
-    
-    // GET WIDTH OF CONTAINER AND SUBTRACT 32 TO GET WIDTH OF MENU BUTTONS AND BORDER
+    var decks = [NSManagedObject?]() //
     
     
     func addTopBorder(btn: UIButton, color: UIColor){
-        let lineView = UIView(frame: CGRect(x: 0,y: 0,width: 343,height: 5)) //Magic number FIX
+        // Get the width of the button
+        let buttonWidth = level1.frame.size.width
+        
+        let lineView = UIView(frame: CGRect(x: 0,y: 0,width: buttonWidth/3 + 10,height: 5))
         lineView.backgroundColor = color
         btn.addSubview(lineView)
     }
@@ -288,8 +289,6 @@ class MenuViewController: UIViewController, sendBack {
                 navigationController?.pushViewController(vc, animated: true)
             }
         }
-
-      
     }
     
     @IBAction func commonWordsList(_ sender: UIButton) {

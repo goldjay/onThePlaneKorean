@@ -26,6 +26,8 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var quizNumLabel: UILabel!
     
+    @IBOutlet weak internal var timerWidth: NSLayoutConstraint!
+    
     var sendBack: sendBack?
     
     //Data from the quiz
@@ -52,7 +54,8 @@ class QuestionViewController: UIViewController {
         setButtonAndBackground(num: num)
  
         //Set original width for timer bar
-        originalWidth = timerLabel.frame.width
+        originalWidth = 343
+        print("Original width: \(originalWidth)")
         decrementAmt = originalWidth / speed //Global options variable
         
         quizNumLabel.text = "QUIZ LEVEL \(num + 1)"
@@ -203,6 +206,10 @@ class QuestionViewController: UIViewController {
         
         numAnswered += 1
         
+        // Reset constraint
+        timerWidth.constant = originalWidth
+        self.view.layoutIfNeeded()
+        
         //wait a moment before asking again
         delayWithSeconds(1){
             self.askQuestion()
@@ -214,6 +221,10 @@ class QuestionViewController: UIViewController {
     func setTimerLabel()
     {
         let currWidth = timerLabel.frame.width
+        
+        timerWidth.constant = currWidth
+        self.view.layoutIfNeeded()
+        
         
         //If you ran out of time
         if currWidth <= 0
@@ -267,6 +278,9 @@ class QuestionViewController: UIViewController {
         let newWidth = originalWidth
         
         timerLabel.frame = CGRect(x: originXbutton, y: originYbutton, width: newWidth, height: oldHeight)
+        
+        timerWidth.constant = originalWidth
+        self.view.layoutIfNeeded()
         
         timer.invalidate()
         count = 0
